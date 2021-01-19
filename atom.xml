@@ -3,11 +3,11 @@
   <title>阳光下的橙子</title>
   
   <subtitle>流动的音符拨动心弦</subtitle>
-  <link href="http://orangepro11.gitee.io/orangepro11.github.io/atom.xml" rel="self"/>
+  <link href="https://orangepro11.github.io/atom.xml" rel="self"/>
   
-  <link href="http://orangepro11.gitee.io/orangepro11.github.io/"/>
+  <link href="https://orangepro11.github.io/"/>
   <updated>2021-01-19T07:34:51.932Z</updated>
-  <id>http://orangepro11.gitee.io/orangepro11.github.io/</id>
+  <id>https://orangepro11.github.io/</id>
   
   <author>
     <name>不爱喝橙子汁</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>壁纸</title>
-    <link href="http://orangepro11.gitee.io/orangepro11.github.io/post/13625.html"/>
-    <id>http://orangepro11.gitee.io/orangepro11.github.io/post/13625.html</id>
+    <link href="https://orangepro11.github.io/post/13625.html"/>
+    <id>https://orangepro11.github.io/post/13625.html</id>
     <published>2021-01-19T07:08:00.000Z</published>
     <updated>2021-01-19T07:34:51.932Z</updated>
     
@@ -28,17 +28,17 @@
     
     
     
-    <category term="生活" scheme="http://orangepro11.gitee.io/orangepro11.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+    <category term="生活" scheme="https://orangepro11.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
     
     
-    <category term="壁纸" scheme="http://orangepro11.gitee.io/orangepro11.github.io/tags/%E5%A3%81%E7%BA%B8/"/>
+    <category term="壁纸" scheme="https://orangepro11.github.io/tags/%E5%A3%81%E7%BA%B8/"/>
     
   </entry>
   
   <entry>
     <title>搭建CDN服务</title>
-    <link href="http://orangepro11.gitee.io/orangepro11.github.io/post/47211.html"/>
-    <id>http://orangepro11.gitee.io/orangepro11.github.io/post/47211.html</id>
+    <link href="https://orangepro11.github.io/post/47211.html"/>
+    <id>https://orangepro11.github.io/post/47211.html</id>
     <published>2021-01-18T18:54:26.000Z</published>
     <updated>2021-01-19T09:00:44.191Z</updated>
     
@@ -47,12 +47,12 @@
     
     
     
-    <category term="技术" scheme="http://orangepro11.gitee.io/orangepro11.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    <category term="技术" scheme="https://orangepro11.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
     
     
-    <category term="白嫖" scheme="http://orangepro11.gitee.io/orangepro11.github.io/tags/%E7%99%BD%E5%AB%96/"/>
+    <category term="白嫖" scheme="https://orangepro11.github.io/tags/%E7%99%BD%E5%AB%96/"/>
     
-    <category term="CDN" scheme="http://orangepro11.gitee.io/orangepro11.github.io/tags/CDN/"/>
+    <category term="CDN" scheme="https://orangepro11.github.io/tags/CDN/"/>
     
   </entry>
   
