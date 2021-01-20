@@ -6,7 +6,7 @@
   <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">Tag: CDN | 阳光下的橙子</title>
+  <title itemprop="name">apple m1上的部分问题解决方案 | 阳光下的橙子</title>
   
     <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
   
@@ -290,79 +290,294 @@
 
       
       <!-- body -->
-      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
 <div class="pattern-center-blank"></div>
-<div class="pattern-center ">
-  <div class="pattern-attachment-img">
-    <img src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="CDN.img" class="lazyload" onerror="imgError(this,3)" style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
+
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg4.jpg);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg4.jpg">
   </div>
-  <header class="pattern-header ">
-    <h1 class="cat-title">CDN</h1>
-    <br>
-    <span class="post-meta-item-icon">
-      <i class="iconfont icon-attention"></i>
-    </span>
-    <span class="post-meta-item-text"><span id="busuanzi_value_page_pv"> </span>
-    </span>
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">apple m1上的部分问题解决方案</h1>
+    <p class="entry-census">
+      
+      <span class="post-meta-item">
+        <a href="https://orangepro11.github.io">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </span>
+      
+      
+      <span class="post-meta-item">
+        <a href="https://orangepro11.github.io"> orangepro </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2021-1-20 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
+
+        
+        <!-- 阅读时长统计 -->
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-book"></i>
+    <span class="post-meta-item-text">字数统计: </span>
+    <!-- 安装插件npm install hexo-wordcount --save -->
+    <span class="post-count">487字</span>
+  </span>
+</span>
+<span class="bull">
+·</span>
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+    <span class="post-meta-item-text">阅读时长≈</span>
+    <span class="post-count">2分钟</span>
+  </span>
+</span>
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/53806"> </span>
+              </span>
+          </span> -->
+    </p>
   </header>
 </div>
+
 <div id="content" class="site-content">
   <div id="primary" class="content-area">
     <main id="main" class="site-main" role="main">
-      
-    <!-- 置顶文章 -->
-    
-      
-    
-    <!-- 首页默认取最最新文章集 -->
-    
-      <!-- 其余文章 -->
-      
-        <article class="post post-list" itemscope="" itemtype="http://schema.org/BlogPosting">
-  <div class="post-entry">
-    <div class="feature">
-      <a href="/post/47211.html">
-        <div class="overlay">
-          <i class="iconfont icon-text">
-          </i>
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="oh-my-zsh的安装"><a href="#oh-my-zsh的安装" class="headerlink" title="oh-my-zsh的安装"></a>oh-my-zsh的安装</h2><p>m1的默认终端就是zsh！可以直接从安装oh-my-zsh开始，安装失败的尝试把DNS地址改为8.8.8.8</p>
+<pre class=" language-bash"><code class="language-bash">sh -c <span class="token string">"<span class="token variable"><span class="token variable">$(</span>curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span class="token variable">)</span></span>"</span></code></pre>
+<p>这里给出我使用的主题和插件：</p>
+<p>配置文件是：~/.zshrc</p>
+<pre class=" language-bash"><code class="language-bash">ZSH_THEME<span class="token operator">=</span><span class="token string">"ys"</span>
+plugins<span class="token operator">=</span><span class="token punctuation">(</span>git <span class="token function">history</span> history-substring-search wd node <span class="token function">npm</span> vscode zsh-autosuggestions<span class="token punctuation">)</span></code></pre>
+<p>插件的安装方式就是从Github把插件clone到${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ 目录下即可</p>
+<p>然后是vscode的命令，在~/.zshrc的最下面添加：</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token keyword">function</span> code <span class="token punctuation">{</span>
+ <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> $<span class="token comment" spellcheck="true"># = 0 ]]</span>
+ <span class="token keyword">then</span>
+ <span class="token function">open</span> -a <span class="token string">"Visual Studio Code"</span>
+ <span class="token keyword">else</span>
+ local argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
+ <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> /* <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">||</span> argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$PWD</span>/<span class="token variable">${1#./}</span>"</span>
+ <span class="token function">open</span> -a <span class="token string">"Visual Studio Code"</span> <span class="token string">"<span class="token variable">$argPath</span>"</span>
+ <span class="token keyword">fi</span>
+<span class="token punctuation">}</span></code></pre>
+<p>之后就可以在终端用<code>code</code>命令唤醒vscode编辑器了</p>
+<h2 id="HomeBrew的安装"><a href="#HomeBrew的安装" class="headerlink" title="HomeBrew的安装"></a>HomeBrew的安装</h2><p>HomeBrew有为M1芯片设计的preview版，但可安装的ARM软件过少，所以我们仍然采用x86的HomeBrew</p>
+<p>打开finder(访达)，在应用程序-&gt;实用工具 中找到<code>终端</code>,右键<code>显示简介</code>，勾选<code>使用Rosetta</code>打开</p>
+<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/apple-m1%E4%B8%8A%E7%9A%84%E9%83%A8%E5%88%86%E9%97%AE%E9%A2%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/image-20210120143943595.png" alt="image-20210120143943595"></p>
+<p>以下是推荐做法：</p>
+<blockquote>
+<p>复制一份，在副本勾选上使用Rosetta打开</p>
+</blockquote>
+<p>然后就可以安装HomeBrew了，安装失败的把DNS地址改为8.8.8.8</p>
+<pre class=" language-bash"><code class="language-bash">/bin/bash -c <span class="token string">"<span class="token variable"><span class="token variable">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh<span class="token variable">)</span></span>"</span></code></pre>
+<h2 id="Docker的使用"><a href="#Docker的使用" class="headerlink" title="Docker的使用"></a>Docker的使用</h2><p>Docker已推送针对M1芯片的preview版本，官网地址：<a target="_blank" rel="noopener" href="https://www.docker.com/blog/download-and-try-the-tech-preview-of-docker-desktop-for-m1/%EF%BC%8C%E4%B8%8B%E8%BD%BD%E5%9C%B0%E5%9D%80%EF%BC%9Ahttps://desktop.docker.com/mac/m1preview/Docker-AppleSilicon-Preview7.dmg">https://www.docker.com/blog/download-and-try-the-tech-preview-of-docker-desktop-for-m1/，下载地址：https://desktop.docker.com/mac/m1preview/Docker-AppleSilicon-Preview7.dmg</a></p>
+<h2 id="JetBrains全家桶的使用"><a href="#JetBrains全家桶的使用" class="headerlink" title="JetBrains全家桶的使用"></a>JetBrains全家桶的使用</h2><p>官网已经对所有的全家桶产品都推送了M1版本，可自行选择下载，想要特殊版本的移步：<a target="_blank" rel="noopener" href="https://www.macz.com/arm.html">https://www.macz.com/arm.html</a></p>
+<h2 id="GoLang的使用"><a href="#GoLang的使用" class="headerlink" title="GoLang的使用"></a>GoLang的使用</h2><p>有两个解决方案，一个是用Docker搭建go1.15的容器，一个是安装go1.16 beta版</p>
+<p>这里给出go1.16安装的参考链接：<a target="_blank" rel="noopener" href="https://my.oschina.net/quicker/blog/4818606">https://my.oschina.net/quicker/blog/4818606</a></p>
+<h2 id="想使用windows应用？"><a href="#想使用windows应用？" class="headerlink" title="想使用windows应用？"></a>想使用windows应用？</h2><p>我使用的是 <a target="_blank" rel="noopener" href="https://www.crossoverchina.com/">CrossOver</a>,现在正好有优惠（截止2021年1月20日），想要特殊版本的移步：<a target="_blank" rel="noopener" href="https://www.macz.com/arm.html">https://www.macz.com/arm.html</a></p>
+
         </div>
-        <img width="150" height="150" src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg2.jpg"
-          class="attachment-post-thumbnail size-post-thumbnail wp-post-image" alt="">
-      </a>
-    </div>
-    <h1 class="entry-title">
-      <a href="/post/47211.html">
-        搭建CDN服务</a>
-    </h1>
-    <div class="p-time">
-      <i class="iconfont icon-time">
-      </i>
-      2021-1-19</div>
-    <p>
-      使用jsdelivr和github搭建CDN服务</p>
-    <footer class="entry-footer">
-      <div class="post-more">
-        <a href="/post/47211.html">
-          <i class="iconfont icon-caidan">
-          </i>
-        </a>
-      </div>
-    </footer>
-  </div>
-  <hr>
-</article>
-       
-    
 
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+          <!-- 五星评分 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 23889});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<!-- <a target="_blank" rel="noopener" href="https://widgetpack.com" class="wpac-cr">Star Rating WIDGET PACK</a> -->
+          
+        </div>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/apple-m1/" style="color: #716e77;">apple m1<em>·</em></a>
+              
+              <a href="/tags/preview/" style="color: #716e77;">preview<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/%E6%8A%80%E6%9C%AF/" style="color: #716e77;">技术</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <!-- <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a>
+          </div>
+        </div> -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+          
+            <div class="post-nepre full next">
+              
+              <a href="/post/13625.html" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1368.JPG"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1368.JPG">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>壁纸</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
 
-
-      <div class="clearer">
-      </div>
-    </main>
-    <!--  -->
-    
-  </div>
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+      <section class="author-profile" >
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="https://orangepro11.github.io" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg" itemprop="image"
+              alt="orangepro" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="https://orangepro11.github.io" itemprop="url" rel="author">orangepro</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>开心才是第一生产力</p>
+      </section>
+      
+    </main><!-- #main -->
+  </div><!-- #primary -->
 </div>
+
+
+<!--评论配置-->
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+
       <!-- body.end -->
     </div>
     <!-- search -->    

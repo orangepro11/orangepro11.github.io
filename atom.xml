@@ -6,7 +6,7 @@
   <link href="https://orangepro11.github.io/atom.xml" rel="self"/>
   
   <link href="https://orangepro11.github.io/"/>
-  <updated>2021-01-19T13:02:19.619Z</updated>
+  <updated>2021-01-20T06:57:59.956Z</updated>
   <id>https://orangepro11.github.io/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>apple m1上的部分问题解决方案</title>
+    <link href="https://orangepro11.github.io/post/53806.html"/>
+    <id>https://orangepro11.github.io/post/53806.html</id>
+    <published>2021-01-20T06:24:01.000Z</published>
+    <updated>2021-01-20T06:57:59.956Z</updated>
+    
+    
+    <summary type="html">描述一句话摘要</summary>
+    
+    
+    
+    <category term="技术" scheme="https://orangepro11.github.io/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="apple m1" scheme="https://orangepro11.github.io/tags/apple-m1/"/>
+    
+    <category term="preview" scheme="https://orangepro11.github.io/tags/preview/"/>
+    
+  </entry>
   
   <entry>
     <title>壁纸</title>
