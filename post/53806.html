@@ -82,10 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
-<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<meta name="generator" content="Hexo 5.3.0">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="阳光下的橙子" type="application/atom+xml">
-</head> 
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head> 
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <!-- Dynamic sliders -->
@@ -344,7 +344,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">479字</span>
+    <span class="post-count">471字</span>
   </span>
 </span>
 <span class="bull">
@@ -353,7 +353,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">2分钟</span>
+    <span class="post-count">1分钟</span>
   </span>
 </span>
         
@@ -391,16 +391,16 @@
 plugins<span class="token operator">=</span><span class="token punctuation">(</span>git <span class="token function">history</span> history-substring-search wd node <span class="token function">npm</span> vscode zsh-autosuggestions<span class="token punctuation">)</span></code></pre>
 <p>插件的安装方式就是从Github把插件clone到${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/ 目录下即可</p>
 <p>然后是vscode的命令，在~/.zshrc的最下面添加：</p>
-<pre class=" language-bash"><code class="language-bash"><span class="token keyword">function</span> code <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;</span>
+<pre class=" language-bash"><code class="language-bash"><span class="token keyword">function</span> code <span class="token punctuation">{</span>
  <span class="token keyword">if</span> <span class="token punctuation">[</span><span class="token punctuation">[</span> $<span class="token comment" spellcheck="true"># = 0 ]]</span>
  <span class="token keyword">then</span>
  <span class="token function">open</span> -a <span class="token string">"Visual Studio Code"</span>
  <span class="token keyword">else</span>
  local argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span>
- <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> /* <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">||</span> argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$PWD</span>/$&amp;#123;1#./&amp;#125;"</span>
+ <span class="token punctuation">[</span><span class="token punctuation">[</span> <span class="token variable">$1</span> <span class="token operator">=</span> /* <span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">&amp;&amp;</span> argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$1</span>"</span> <span class="token operator">||</span> argPath<span class="token operator">=</span><span class="token string">"<span class="token variable">$PWD</span>/<span class="token variable">${1#./}</span>"</span>
  <span class="token function">open</span> -a <span class="token string">"Visual Studio Code"</span> <span class="token string">"<span class="token variable">$argPath</span>"</span>
  <span class="token keyword">fi</span>
-<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#125;</span></code></pre>
+<span class="token punctuation">}</span></code></pre>
 <p>之后就可以在终端用<code>code</code>命令唤醒vscode编辑器了</p>
 <h2 id="HomeBrew的安装"><a href="#HomeBrew的安装" class="headerlink" title="HomeBrew的安装"></a>HomeBrew的安装</h2><p>HomeBrew有为M1芯片设计的preview版，但可安装的ARM软件过少，所以我们仍然采用x86的HomeBrew</p>
 <p>打开finder(访达)，在应用程序-&gt;实用工具 中找到<code>终端</code>,右键<code>显示简介</code>，勾选<code>使用Rosetta</code>打开</p>
@@ -487,7 +487,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <div class="tag-cloud-title">
           </div>
           <div class="tag-cloud-tags">
-            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a>
+            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a> <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 10px; color: #f06966">表情包</a>
           </div>
         </div> -->
       </article>
@@ -495,10 +495,27 @@ wpac_init.push({widget: 'Rating', id: 23889});
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/post/14978.html" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/表情包/5.jpg"
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/表情包/5.jpg">
+              </div>
+              <span class="label">Previous Post</span>
+              <div class="info">
+                <h3>表情包</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
           
           
-            <div class="post-nepre full next">
-              
+          
+          <div class="post-nepre half next">
+            
               <a href="/post/13625.html" rel="next">
                 <div class="background">
                   <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1368.JPG"
@@ -647,7 +664,7 @@ gitalk.render('gitalk-container')
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">749</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">741</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               
