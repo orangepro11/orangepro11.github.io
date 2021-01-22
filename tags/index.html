@@ -366,19 +366,10 @@
                 </a>
                 
                 
-                <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" title="表情包: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            data-tagname="表情包" style="background-color: #E8F8F5;">表情包
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/tags/%E7%99%BD%E5%AB%96/" title="白嫖: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="白嫖" style="background-color: #FEF9E7;">白嫖
+                            data-tagname="白嫖" style="background-color: #E8F8F5;">白嫖
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -387,7 +378,16 @@
                 <a href="/tags/CDN/" title="CDN: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            data-tagname="CDN" style="background-color: #F8F9F9;">CDN
+                            data-tagname="CDN" style="background-color: #FEF9E7;">CDN
+                        <span class="tag-length">1</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" title="表情包: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            data-tagname="表情包" style="background-color: #F8F9F9;">表情包
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -497,7 +497,7 @@
 <script type="text/javascript">
     
 
-    $('#tag-wordcloud').jQCloud( [{"text":"apple m1","weight":1,"link":"/tags/apple-m1/"},{"text":"preview","weight":1,"link":"/tags/preview/"},{"text":"壁纸","weight":1,"link":"/tags/壁纸/"},{"text":"表情包","weight":1,"link":"/tags/表情包/"},{"text":"白嫖","weight":1,"link":"/tags/白嫖/"},{"text":"CDN","weight":1,"link":"/tags/CDN/"}], {
+    $('#tag-wordcloud').jQCloud( [{"text":"apple m1","weight":1,"link":"/tags/apple-m1/"},{"text":"preview","weight":1,"link":"/tags/preview/"},{"text":"壁纸","weight":1,"link":"/tags/壁纸/"},{"text":"白嫖","weight":1,"link":"/tags/白嫖/"},{"text":"CDN","weight":1,"link":"/tags/CDN/"},{"text":"表情包","weight":1,"link":"/tags/表情包/"}], {
         autoResize: true
     });
 </script>
@@ -544,7 +544,7 @@
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -556,10 +556,10 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
