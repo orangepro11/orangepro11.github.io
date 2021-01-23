@@ -344,7 +344,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">450字</span>
+    <span class="post-count">464字</span>
   </span>
 </span>
 <span class="bull">
@@ -353,7 +353,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">1分钟</span>
+    <span class="post-count">2分钟</span>
   </span>
 </span>
         
@@ -472,7 +472,7 @@ git --work-tree=/home/git/projects/blog --git-dir=/home/git/repos/blog.git check
 <pre class=" language-bash"><code class="language-bash"><span class="token function">chown</span> -R git:git /home/git/repos/blog.git</code></pre>
 <h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>随便找一个文件夹，拉取服务器上的git空仓库</p>
 <pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone git@server_ip:/home/git/repos/blog.git</code></pre>
-<h2 id="建立ssh认证"><a href="#建立ssh认证" class="headerlink" title="建立ssh认证"></a>建立ssh认证</h2><pre class=" language-bash"><code class="language-bash">ssh-copy-id -i C:/Users/yourname/.ssh/id_rsa.pub git@server_ip
+<h2 id="建立ssh认证"><a href="#建立ssh认证" class="headerlink" title="建立ssh认证"></a>建立ssh认证</h2><pre class=" language-bash"><code class="language-bash">ssh-copy-id -i <span class="token punctuation">[</span>根据你的操作系统路径也不一样，参考上面<span class="token punctuation">]</span>/id_rsa.pub git@server_ip
 <span class="token function">ssh</span> git@server_ip </code></pre>
 <p>如果不需要输入密码即完成登录，则认证成功</p>
 <blockquote>
@@ -645,7 +645,7 @@ gitalk.render('gitalk-container')
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..."/>
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -657,10 +657,10 @@ gitalk.render('gitalk-container')
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            // PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
+            POSTS: '文章',
+            // PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
