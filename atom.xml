@@ -6,7 +6,7 @@
   <link href="https://mini.buaihechengzizhi.com/atom.xml" rel="self"/>
   
   <link href="https://mini.buaihechengzizhi.com/"/>
-  <updated>2021-01-20T12:59:08.637Z</updated>
+  <updated>2021-01-23T07:35:16.934Z</updated>
   <id>https://mini.buaihechengzizhi.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>在服务器上搭建git仓库</title>
+    <link href="https://mini.buaihechengzizhi.com/post/36801.html"/>
+    <id>https://mini.buaihechengzizhi.com/post/36801.html</id>
+    <published>2021-01-23T07:09:09.000Z</published>
+    <updated>2021-01-23T07:35:16.934Z</updated>
+    
+    
+    <summary type="html">尝试在自己的服务器上搭建一个git仓库</summary>
+    
+    
+    
+    <category term="技术" scheme="https://mini.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="git" scheme="https://mini.buaihechengzizhi.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
     <title>表情包</title>
     <link href="https://mini.buaihechengzizhi.com/post/14978.html"/>
     <id>https://mini.buaihechengzizhi.com/post/14978.html</id>
     <published>2021-01-20T12:50:39.000Z</published>
-    <updated>2021-01-20T12:59:08.637Z</updated>
+    <updated>2021-01-23T07:10:44.818Z</updated>
     
     
     <summary type="html">暹罗猫？</summary>
@@ -40,7 +59,7 @@
     <link href="https://mini.buaihechengzizhi.com/post/53806.html"/>
     <id>https://mini.buaihechengzizhi.com/post/53806.html</id>
     <published>2021-01-20T06:24:01.000Z</published>
-    <updated>2021-01-20T07:01:49.853Z</updated>
+    <updated>2021-01-23T07:10:51.669Z</updated>
     
     
     <summary type="html">关于M1芯片上的部分解决方案</summary>
@@ -61,7 +80,7 @@
     <link href="https://mini.buaihechengzizhi.com/post/13625.html"/>
     <id>https://mini.buaihechengzizhi.com/post/13625.html</id>
     <published>2021-01-19T07:08:00.000Z</published>
-    <updated>2021-01-20T16:36:30.344Z</updated>
+    <updated>2021-01-23T07:10:38.580Z</updated>
     
     
     <summary type="html">精选壁纸</summary>
@@ -80,7 +99,7 @@
     <link href="https://mini.buaihechengzizhi.com/post/47211.html"/>
     <id>https://mini.buaihechengzizhi.com/post/47211.html</id>
     <published>2021-01-18T18:54:26.000Z</published>
-    <updated>2021-01-19T09:00:44.191Z</updated>
+    <updated>2021-01-23T07:10:32.369Z</updated>
     
     
     <summary type="html">使用jsdelivr和github搭建CDN服务</summary>

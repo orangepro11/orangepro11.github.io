@@ -6,7 +6,7 @@
   <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">壁纸 | 阳光下的橙子</title>
+  <title itemprop="name">在服务器上搭建git仓库 | 阳光下的橙子</title>
   
     <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
   
@@ -296,11 +296,11 @@
 
 <div class="pattern-center single-center">
   <!-- 有配图默认渲染第一张 -->
-  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1368.JPG);"
-    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1368.JPG">
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg6.jpg);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg6.jpg">
   </div>
   <header class="pattern-header single-header">
-    <h1 class="entry-title">壁纸</h1>
+    <h1 class="entry-title">在服务器上搭建git仓库</h1>
     <p class="entry-census">
       
       <span class="post-meta-item">
@@ -320,7 +320,7 @@
         <span class="post-meta-item-icon">
           <i class="fa fa-calendar"></i>
         </span>
-        <span class="post-meta-item-text"> 2021-1-19 </span>
+        <span class="post-meta-item-text"> 2021-1-23 </span>
       </span>
       <span class="bull">
         ·</span>
@@ -344,7 +344,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">0字</span>
+    <span class="post-count">450字</span>
   </span>
 </span>
 <span class="bull">
@@ -366,7 +366,7 @@
                 <i class="fa fa-comment-o"></i>
               </span>
               </span class="post-meta-item-text">
-                <span class="valine-comment-count" data-xid="/13625"> </span>
+                <span class="valine-comment-count" data-xid="/36801"> </span>
               </span>
           </span> -->
     </p>
@@ -383,18 +383,101 @@
         <!--套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_0868.JPG" alt="IMG_0868"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_1368.JPG" alt="IMG_1368"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_1369.JPG" alt="IMG_1369"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_1370.JPG" alt="IMG_1370"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_1461.JPG" alt="IMG_1461"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_1462.JPG" alt="IMG_1462"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_1463.JPG" alt="IMG_1463"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG_1464.JPG" alt="IMG_1464"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/IMG.JPG" alt="IMG"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/bg3.jpg" alt="IMG"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/bg4.jpg" alt="IMG"></p>
-<p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E5%A3%81%E7%BA%B8/bg5.jpg" alt="IMG"></p>
+          <h2 id="所需材料"><a href="#所需材料" class="headerlink" title="所需材料"></a>所需材料</h2><ul>
+<li>云服务器 * 1</li>
+<li>域名（可选）</li>
+</ul>
+<h2 id="本地搭建git环境"><a href="#本地搭建git环境" class="headerlink" title="本地搭建git环境"></a>本地搭建git环境</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://git-scm.com/downloads">git官网</a> 下载 git</li>
+<li>配置邮箱和密码（随意填，没有验证）</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global user.name <span class="token string">"yourname"</span>
+<span class="token function">git</span> config --global user.email <span class="token string">"youremail@example.com"</span></code></pre>
+<ol start="3">
+<li>生成ssh密钥对（引号里的内容也是随便填）</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash">ssh-keygen -t rsa -C <span class="token string">"youremail@example.com"</span></code></pre>
+<ol start="4">
+<li>禁用自动转换（可选操作）</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> config --global core.autocrlf <span class="token boolean">false</span> </code></pre>
+<ol start="5">
+<li>生成的ssh认证文件在：</li>
+</ol>
+<ul>
+<li>windows：%<em>Userprofile</em>%/.ssh/</li>
+<li>MacOS &amp; Linux : ~/.ssh/</li>
+</ul>
+<h2 id="服务器搭建git私有仓库"><a href="#服务器搭建git私有仓库" class="headerlink" title="服务器搭建git私有仓库"></a>服务器搭建git私有仓库</h2><ol>
+<li>登录远程服务器，以下用<code>server_ip</code>表示你的服务器ip</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">ssh</span> root@server_ip</code></pre>
+<ol start="2">
+<li>检查是否有安装git,如果没有，则执行<code>yum install -y git</code></li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> --version</code></pre>
+<ol start="3">
+<li>安装一些必要的(可能需要的)工具</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash">yum <span class="token function">install</span> curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel</code></pre>
+<ol start="4">
+<li>创建用户</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">useradd</span> <span class="token function">git</span></code></pre>
+<ol start="5">
+<li>为它设置密码</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">passwd</span> <span class="token function">git</span></code></pre>
+<ol start="6">
+<li>切换为git用户以执行后续操作</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">su</span> <span class="token function">git</span></code></pre>
+<ol start="7">
+<li>去git用户的家目录</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> /home/git/</code></pre>
+<ol start="8">
+<li>创建项目存储的真实目录</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> -p projects/blog </code></pre>
+<ol start="9">
+<li>创建仓库目录</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">mkdir</span> repos <span class="token operator">&amp;&amp;</span> <span class="token function">cd</span> repos</code></pre>
+<ol start="10">
+<li>创建一个空的仓库（也可以从GitHub拉取）</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> init --bare blog.git </code></pre>
+<ol start="11">
+<li>创建hook</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">cd</span> blog.git/hooks
+<span class="token function">vi</span> post-receive</code></pre>
+<ol start="12">
+<li>写入以下内容</li>
+</ol>
+<pre class=" language-shell"><code class="language-shell">#!/bin/sh
+git --work-tree=/home/git/projects/blog --git-dir=/home/git/repos/blog.git checkout -f</code></pre>
+<ol start="13">
+<li>ESC : wq退出，然后添加权限</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">chmod</span> +x post-receive</code></pre>
+<ol start="14">
+<li>返回root用户</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token keyword">exit</span></code></pre>
+<ol start="15">
+<li>添加权限</li>
+</ol>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">chown</span> -R git:git /home/git/repos/blog.git</code></pre>
+<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2><p>随便找一个文件夹，拉取服务器上的git空仓库</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token function">git</span> clone git@server_ip:/home/git/repos/blog.git</code></pre>
+<h2 id="建立ssh认证"><a href="#建立ssh认证" class="headerlink" title="建立ssh认证"></a>建立ssh认证</h2><pre class=" language-bash"><code class="language-bash">ssh-copy-id -i C:/Users/yourname/.ssh/id_rsa.pub git@server_ip
+<span class="token function">ssh</span> git@server_ip </code></pre>
+<p>如果不需要输入密码即完成登录，则认证成功</p>
+<blockquote>
+<p>至此，在远程服务器上搭建git仓库完成，如果完成了<code>域名DNS解析</code>，则可以用域名代替你的server_ip</p>
+</blockquote>
 
         </div>
 
@@ -444,13 +527,13 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <div class="post-tags" style="color: #a39391">
             <span><i class="fa fa-tags"></i>
               
-              <a href="/tags/%E5%A3%81%E7%BA%B8/" style="color: #716e77;">壁纸<em>·</em></a>
+              <a href="/tags/git/" style="color: #716e77;">git<em>·</em></a>
               
             </span>
             <span>
               <i class="iconfont icon-file"></i>
               
-              <a href="/categories/%E7%94%9F%E6%B4%BB/" style="color: #716e77;">生活</a>
+              <a href="/categories/%E6%8A%80%E6%9C%AF/" style="color: #716e77;">技术</a>
               
             </span>
           </div>
@@ -472,36 +555,19 @@ wpac_init.push({widget: 'Rating', id: 23889});
       <div class="toc" style="background: none;"></div>
       <section class="post-squares nextprev">
         
-        
-        <div class="post-nepre half previous">
-          
-            <a href="/post/53806.html" rel="prev">
-              <div class="background">
-                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg4.jpg"
-                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
-                  src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg4.jpg">
-              </div>
-              <span class="label">Previous Post</span>
-              <div class="info">
-                <h3>apple m1上的部分问题解决方案</h3>
-                <hr>
-              </div>
-            </a>
-          </div>
           
           
-          
-          <div class="post-nepre half next">
-            
-              <a href="/post/47211.html" rel="next">
+            <div class="post-nepre full next">
+              
+              <a href="/post/14978.html" rel="next">
                 <div class="background">
-                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg2.jpg"
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg5.jpg"
                     style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
-                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg2.jpg">
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg5.jpg">
                 </div>
                 <span class="label">Next Post</span>
                 <div class="info">
-                  <h3>搭建CDN服务</h3>
+                  <h3>表情包</h3>
                   <hr>
                 </div>
               </a>
