@@ -82,10 +82,10 @@
       alert('朋友，IE浏览器未适配哦~');
     }
   </script>
-<meta name="generator" content="Hexo 5.3.0">
+<meta name="generator" content="Hexo 5.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="阳光下的橙子" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head> 
+</head> 
 
 <body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
   <!-- Dynamic sliders -->
@@ -344,7 +344,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">1.1k字</span>
+    <span class="post-count">1.2k字</span>
   </span>
 </span>
 <span class="bull">
@@ -353,7 +353,7 @@
   <span class="post-meta-item-icon">
     <i class="fa fa-coffee"></i>
     <span class="post-meta-item-text">阅读时长≈</span>
-    <span class="post-count">4分钟</span>
+    <span class="post-count">5分钟</span>
   </span>
 </span>
         
@@ -385,13 +385,13 @@
         <div class="entry-content">
           <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先希望你认真阅读这部分内容，这对你理解什么是浅拷贝和深拷贝非常的有帮助，不至于产生困惑。</p>
 <p>我们将通过JavaScript语法构建一个对象名为student，它有<code>name</code>和<code>score</code>两个属性，而score又会包含若干属性表示成绩，在之后的例子中他们将反复出现。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentA <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentA <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     name<span class="token punctuation">:</span><span class="token string">'A'</span><span class="token punctuation">,</span>
-    score<span class="token punctuation">:</span><span class="token punctuation">{</span>
+    score<span class="token punctuation">:</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         Math<span class="token punctuation">:</span><span class="token number">43</span><span class="token punctuation">,</span>
         English<span class="token punctuation">:</span><span class="token number">80</span>
-    <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <p>以上代码表示一个同学名为A，数学43分，英语80分，它将不再重复出现。</p>
 <p>现在请注意分析以下代码：</p>
 <h3 id="实例一"><a href="#实例一" class="headerlink" title="实例一"></a>实例一</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> studentA
@@ -399,7 +399,7 @@ studentB<span class="token punctuation">.</span>name <span class="token operator
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
 <p>以上代码的运行结果为</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'B'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> name<span class="token punctuation">:</span> <span class="token string">'B'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <p>相信大家对这个结果是没有异议的，因为studentA和studentB实际上指向了一个内存地址，所以任何的更改必然同时影响A和B。现在的问题是：这个叫什么？</p>
 <blockquote>
 <p>回答“赋值”的人，恭喜你回答正确；对于回答“浅拷贝”的人，请继续往下看</p>
@@ -409,98 +409,98 @@ studentB<span class="token punctuation">.</span>name <span class="token operator
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
 <p>以上代码的运行结果为</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <p>这个也很好理解，经过JSON序列化后他们显然不再有直接的关系了，那么，这个叫什么？</p>
 <blockquote>
 <p>没错，就是深拷贝，现在请继续往下看，</p>
 </blockquote>
-<h3 id="实例三"><a href="#实例三" class="headerlink" title="实例三"></a>实例三</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>studentA<span class="token punctuation">)</span>
+<h3 id="实例三"><a href="#实例三" class="headerlink" title="实例三"></a>实例三</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">,</span>studentA<span class="token punctuation">)</span>
 studentB<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'B'</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
 <p>以上代码的运行结果为</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <p>对于不熟悉Object.assign()方法的，请参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">这个链接</a>，现在要来问，这个叫什么？</p>
 <p>首先要恭喜回答浅拷贝的人回答正确，如果你的回答是深拷贝，请思考如下代码的运行结果</p>
 <pre class=" language-javascript"><code class="language-javascript">studentB<span class="token punctuation">.</span>score<span class="token punctuation">.</span>Math <span class="token operator">=</span> <span class="token number">98</span>
 
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
 <p>运行结果是</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">98</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span> Math<span class="token punctuation">:</span> <span class="token number">98</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span> <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <blockquote>
 <p>发现问题了吗？studentA里的name虽然没变，但是score却受了影响，换句话说，它可以复制一份值对象，但是对于引用对象却无能为力。这就叫<code>浅拷贝</code></p>
 </blockquote>
 <h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>前面我们分别讲述了赋值，深拷贝，浅拷贝这三种情况，这里我就不对深拷贝和浅拷贝下定义了，因为一定会把你们绕迷糊的，所以我们只讲述深浅拷贝的若干种方法的特性和优缺点。</p>
 <h3 id="使用ES6的扩展运算符实现浅拷贝"><a href="#使用ES6的扩展运算符实现浅拷贝" class="headerlink" title="使用ES6的扩展运算符实现浅拷贝"></a>使用ES6的扩展运算符实现浅拷贝</h3><p>这个方法实际上和object.assign()方法有异曲同工之妙，写起来更简单一些，但是我还是要说，它不能替代Object.assgin()，具体体现在对象的合并上，这里我就不展开叙述，不然就偏题了。</p>
-<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">...</span>studentA<span class="token punctuation">}</span></code></pre>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">...</span>studentA<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span></code></pre>
 <h3 id="借助JSON的工具方法实现深拷贝"><a href="#借助JSON的工具方法实现深拷贝" class="headerlink" title="借助JSON的工具方法实现深拷贝"></a>借助JSON的工具方法实现深拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
 <p>以上方法可以满足大部分的深拷贝需求，但是请注意：<strong>此方法对undefined,RegExp,function等类型无效</strong>，如果你的对象中含有这些类型，请注意他们会被丢失。</p>
-<h3 id="使用Object-create-方法完成深拷贝"><a href="#使用Object-create-方法完成深拷贝" class="headerlink" title="使用Object.create()方法完成深拷贝"></a>使用Object.create()方法完成深拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<h3 id="使用Object-create-方法完成深拷贝"><a href="#使用Object-create-方法完成深拷贝" class="headerlink" title="使用Object.create()方法完成深拷贝"></a>使用Object.create()方法完成深拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token keyword">var</span> copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">var</span> propNames <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-  propNames<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  propNames<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">var</span> desc <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
     Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>copy<span class="token punctuation">,</span> name<span class="token punctuation">,</span> desc<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token keyword">return</span> copy<span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token keyword">let</span> studentB <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span></code></pre>
-<h3 id="使用递归算法完成深拷贝-无坑版"><a href="#使用递归算法完成深拷贝-无坑版" class="headerlink" title="使用递归算法完成深拷贝(无坑版)"></a>使用递归算法完成深拷贝(无坑版)</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isPrimitive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<h3 id="使用递归算法完成深拷贝-无坑版"><a href="#使用递归算法完成深拷贝-无坑版" class="headerlink" title="使用递归算法完成深拷贝(无坑版)"></a>使用递归算法完成深拷贝(无坑版)</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isPrimitive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">||</span> 
   <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">||</span> 
   <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'symbol'</span> <span class="token operator">||</span>
   <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'boolean'</span><span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
  * 判断是否是一个js对象
  * @param value 
  */</span>
-<span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
   <span class="token keyword">return</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object Object]"</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token comment" spellcheck="true">/**
  * 深拷贝一个值
  * @param value 
  */</span>
-<span class="token keyword">function</span> <span class="token function">cloneDeep</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+<span class="token keyword">function</span> <span class="token function">cloneDeep</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
 
   <span class="token comment" spellcheck="true">// 记录被拷贝的值，避免循环引用的出现</span>
-  <span class="token keyword">let</span> memo <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> memo <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
 
-  <span class="token keyword">function</span> <span class="token function">baseClone</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">baseClone</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
     <span class="token keyword">let</span> res<span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 如果是基本数据类型，则直接返回</span>
-    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isPrimitive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isPrimitive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
       <span class="token keyword">return</span> value<span class="token punctuation">;</span>
     <span class="token comment" spellcheck="true">// 如果是引用数据类型，我们浅拷贝一个新值来代替原来的值</span>
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
       res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>value<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
-      res <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">...</span>value<span class="token punctuation">}</span><span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      res <span class="token operator">=</span> <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span><span class="token operator">...</span>value<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
     <span class="token comment" spellcheck="true">// 检测我们浅拷贝的这个对象的属性值有没有是引用数据类型。如果是，则递归拷贝</span>
-    Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
-      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">&amp;&amp;</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">&amp;&amp;</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
         <span class="token comment" spellcheck="true">//此处我们用memo来记录已经被拷贝过的引用地址。以此来解决循环引用的问题</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>memo<span class="token punctuation">[</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>memo<span class="token punctuation">[</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
           res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> memo<span class="token punctuation">[</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token keyword">else</span><span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
           memo<span class="token punctuation">[</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
           res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">baseClone</span><span class="token punctuation">(</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token punctuation">}</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+      <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+    <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span><span class="token punctuation">)</span>
     <span class="token keyword">return</span> res<span class="token punctuation">;</span>  
-  <span class="token punctuation">}</span>
+  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
   <span class="token keyword">return</span> <span class="token function">baseClone</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
-<span class="token punctuation">}</span>
+<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
 
 <span class="token keyword">let</span> studentB <span class="token operator">=</span> <span class="token function">cloneDeep</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span></code></pre>
 <h3 id="使用ES插件lodash完成深拷贝"><a href="#使用ES插件lodash完成深拷贝" class="headerlink" title="使用ES插件lodash完成深拷贝"></a>使用ES插件lodash完成深拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> lodash <span class="token keyword">from</span> <span class="token string">'lodash'</span>
@@ -576,7 +576,7 @@ wpac_init.push({widget: 'Rating', id: 23889});
           <div class="tag-cloud-title">
           </div>
           <div class="tag-cloud-tags">
-            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/JavaScript/" style="font-size: 10px; color: #f06966">JavaScript</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/git/" style="font-size: 10px; color: #f06966">git</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/python3/" style="font-size: 10px; color: #f06966">python3</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a> <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 10px; color: #f06966">表情包</a>
+            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/JavaScript/" style="font-size: 10px; color: #f06966">JavaScript</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/git/" style="font-size: 10px; color: #f06966">git</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/python3/" style="font-size: 10px; color: #f06966">python3</a> <a href="/tags/rust/" style="font-size: 10px; color: #f06966">rust</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a> <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 10px; color: #f06966">表情包</a>
           </div>
         </div> -->
       </article>
@@ -753,7 +753,7 @@ gitalk.render('gitalk-container')
           <p style="font-family: 'Ubuntu', sans-serif;">
             <span style="color: #b9b9b9;padding-left: 20px;">
               <!-- 全网站字数统计wordcount -->
-              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">3.1k</span>字</span>
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">7.1k</span>字</span>
               <!-- 不蒜子网页计数器 -->
               
               
