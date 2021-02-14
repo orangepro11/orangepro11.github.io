@@ -423,7 +423,7 @@
 <p>使用cargo run 运行项目。</p>
 <h2 id="终端打印"><a href="#终端打印" class="headerlink" title="终端打印"></a>终端打印</h2><p>非常非常基础且重要的一个功能，和C语言中的printf一样，rust中的println!有相似的工作逻辑，它只能打印一个格式化的字符串，而不能打印数字，数组，对象之类的东西。所以我们也需要一个类似于占位符的东西，在rust中，它写作一对花括号。</p>
 <pre class=" language-rust"><code class="language-rust"><span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"Number:{}"</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>这个占位符是按顺序一次匹配后面传入的参数的。</p>
+<p>这个占位符是按顺序依次匹配后面传入的参数的。</p>
 <pre class=" language-rust"><code class="language-rust"><span class="token function">println!</span><span class="token punctuation">(</span><span class="token string">"{} is from {}"</span><span class="token punctuation">,</span><span class="token string">"orange"</span><span class="token punctuation">,</span><span class="token string">"amazon"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <h3 id="位置匹配"><a href="#位置匹配" class="headerlink" title="位置匹配"></a>位置匹配</h3><pre class=" language-bash"><code class="language-bash">println<span class="token operator">!</span><span class="token punctuation">(</span><span class="token string">"{0} is from {1} and {0} likes {2}"</span>,<span class="token string">"timelight"</span>,<span class="token string">"china"</span>,<span class="token string">"code"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
 <p>运行结果：</p>
