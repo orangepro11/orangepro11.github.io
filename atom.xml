@@ -6,7 +6,7 @@
   <link href="https://mini.buaihechengzizhi.com/atom.xml" rel="self"/>
   
   <link href="https://mini.buaihechengzizhi.com/"/>
-  <updated>2021-02-14T17:44:28.264Z</updated>
+  <updated>2021-02-15T07:27:39.030Z</updated>
   <id>https://mini.buaihechengzizhi.com/</id>
   
   <author>
@@ -17,11 +17,30 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>normalize.css内容</title>
+    <link href="https://mini.buaihechengzizhi.com/post/12437.html"/>
+    <id>https://mini.buaihechengzizhi.com/post/12437.html</id>
+    <published>2021-02-15T07:26:58.000Z</published>
+    <updated>2021-02-15T07:27:39.030Z</updated>
+    
+    
+    <summary type="html">normalize.css里的内容，方便以后复制</summary>
+    
+    
+    
+    <category term="技术" scheme="https://mini.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="css" scheme="https://mini.buaihechengzizhi.com/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
     <title>rust for beginners</title>
     <link href="https://mini.buaihechengzizhi.com/post/11241.html"/>
     <id>https://mini.buaihechengzizhi.com/post/11241.html</id>
     <published>2021-02-14T15:39:14.000Z</published>
-    <updated>2021-02-14T17:44:28.264Z</updated>
+    <updated>2021-03-02T13:03:44.546Z</updated>
     
     
     <summary type="html">为初学者准备的rust入门（误）</summary>
