@@ -6,7 +6,7 @@
   <link href="https://mini.buaihechengzizhi.com/atom.xml" rel="self"/>
   
   <link href="https://mini.buaihechengzizhi.com/"/>
-  <updated>2021-02-15T07:27:39.030Z</updated>
+  <updated>2021-03-25T12:18:22.241Z</updated>
   <id>https://mini.buaihechengzizhi.com/</id>
   
   <author>
@@ -17,11 +17,32 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SpringBoot实现用户注册登录+邮箱验证</title>
+    <link href="https://mini.buaihechengzizhi.com/post/60573.html"/>
+    <id>https://mini.buaihechengzizhi.com/post/60573.html</id>
+    <published>2021-03-25T12:14:32.000Z</published>
+    <updated>2021-03-25T12:18:22.241Z</updated>
+    
+    
+    <summary type="html">描述一句话摘要</summary>
+    
+    
+    
+    <category term="技术" scheme="https://mini.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="springboot" scheme="https://mini.buaihechengzizhi.com/tags/springboot/"/>
+    
+    <category term="java" scheme="https://mini.buaihechengzizhi.com/tags/java/"/>
+    
+  </entry>
+  
+  <entry>
     <title>normalize.css内容</title>
     <link href="https://mini.buaihechengzizhi.com/post/12437.html"/>
     <id>https://mini.buaihechengzizhi.com/post/12437.html</id>
     <published>2021-02-15T07:26:58.000Z</published>
-    <updated>2021-02-15T07:27:39.030Z</updated>
+    <updated>2021-03-02T13:03:54.768Z</updated>
     
     
     <summary type="html">normalize.css里的内容，方便以后复制</summary>
