@@ -6,7 +6,7 @@
   <link href="https://mini.buaihechengzizhi.com/atom.xml" rel="self"/>
   
   <link href="https://mini.buaihechengzizhi.com/"/>
-  <updated>2021-03-25T12:21:16.548Z</updated>
+  <updated>2021-05-12T15:07:22.730Z</updated>
   <id>https://mini.buaihechengzizhi.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数制与补码</title>
+    <link href="https://mini.buaihechengzizhi.com/post/696.html"/>
+    <id>https://mini.buaihechengzizhi.com/post/696.html</id>
+    <published>2021-05-12T14:19:40.000Z</published>
+    <updated>2021-05-12T15:07:22.730Z</updated>
+    
+    
+    <summary type="html">没有摘要</summary>
+    
+    
+    
+    <category term="技术" scheme="https://mini.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="数值" scheme="https://mini.buaihechengzizhi.com/tags/%E6%95%B0%E5%80%BC/"/>
+    
+    <category term="码制" scheme="https://mini.buaihechengzizhi.com/tags/%E7%A0%81%E5%88%B6/"/>
+    
+  </entry>
   
   <entry>
     <title>SpringBoot实现用户注册登录+邮箱验证</title>

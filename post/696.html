@@ -6,7 +6,7 @@
   <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
   
-  <title itemprop="name">分类 | 阳光下的橙子</title>
+  <title itemprop="name">数制与补码 | 阳光下的橙子</title>
   
     <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
   
@@ -290,32 +290,221 @@
 
       
       <!-- body -->
-        <div class="pattern-center-blank"></div>
-  
-  <div class="pattern-center ">
-    <div class="pattern-attachment-img">
-      <img src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/banner/donate.jpg" class="lazyload" onerror="imgError(this,3)"
-        style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;">
-    </div>
-    <header class="pattern-header ">
-      <h1 class="entry-title">
-        </h1>
-      <span class="post-meta-item-icon">
-        <i class="iconfont icon-attention"></i>
-      </span>
-      <span class="post-meta-item-text">本页共<span id="busuanzi_value_page_pv"> </span>次阅读
-      </span>
-    </header>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg11.png);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg11.png">
   </div>
-  
-  <div id="content" class="site-content">
-    <article class="post-item post-301 page type-page status-publish has-post-thumbnail hentry">
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">数制与补码</h1>
+    <p class="entry-census">
       
-      <!-- .entry-content -->
+      <span class="post-meta-item">
+        <a href="https://mini.buaihechengzizhi.com">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </span>
       
+      
+      <span class="post-meta-item">
+        <a href="https://mini.buaihechengzizhi.com"> orangepro </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2021-5-12 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
 
+        
+        <!-- 阅读时长统计 -->
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-book"></i>
+    <span class="post-meta-item-text">字数统计: </span>
+    <!-- 安装插件npm install hexo-wordcount --save -->
+    <span class="post-count">1.1k字</span>
+  </span>
+</span>
+<span class="bull">
+·</span>
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+    <span class="post-meta-item-text">阅读时长≈</span>
+    <span class="post-count">3分钟</span>
+  </span>
+</span>
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/696"> </span>
+              </span>
+          </span> -->
+    </p>
+  </header>
+</div>
 
-      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>写这篇文章一方面给人解惑另一方面使防止自己以后抽风（因为近期已经抽风过一次）。</p>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="二转十"><a href="#二转十" class="headerlink" title="二转十"></a>二转十</h2><p>简明的8421法，从右往左数每一位乘1，2，4，8，16，32….然后加起来，这个就叫加权法。比如0101就是5。</p>
+<h2 id="十转二"><a href="#十转二" class="headerlink" title="十转二"></a>十转二</h2><p>短除法，小学二年级知识。</p>
+<h2 id="二转八"><a href="#二转八" class="headerlink" title="二转八"></a>二转八</h2><p>每三位当成一个十进制数看，不足就往前补0，一定记得是从右往左看，然后照抄在对应位置就行。比如101 001就是51（八进制的51）。</p>
+<h2 id="二转十六"><a href="#二转十六" class="headerlink" title="二转十六"></a>二转十六</h2><p>每四位当成一个十进制数照抄。</p>
+<h1 id="正负号"><a href="#正负号" class="headerlink" title="正负号"></a>正负号</h1><p>十进制区分正负数用+号和-号表示，非常简单明了，那二进制也这么来不就行了？那不行，计算机只能读取01序列是不言之命的真理。</p>
+<p>那就是说至少得需要用一个二进制位去表示是正是负，所以就在数字最前规定一个符号位，当它为0的时候表示是正数，为1的时候就表示是负数，起到和+和-相同的效果。</p>
+<h1 id="引发的问题"><a href="#引发的问题" class="headerlink" title="引发的问题"></a>引发的问题</h1><p>到目前为止一切都非常完美，不仅能自如的转换十进制和二进制，还能解决正负号的问题，这实数的所有问题不就都解决了吗？并没有，你还得解决运算问题。</p>
+<p>按照前面的理论，+5的二进制数为：0 0101 ； -5的二进制数就是：1 0101对吧，现在我们知道一个显而易见的事实：+5 + ( -5 ) = 0，但是我们的0 0101 + 1 0101可不等于0啊，也就是说这种方法并不难解决运算问题，相加得0明显是不言自明的真理，但仅仅因为数制不同就连这个问题都解决不了了？</p>
+<h1 id="问题的关键"><a href="#问题的关键" class="headerlink" title="问题的关键"></a>问题的关键</h1><p>关键在于我们的这套编码方式同时具有“权重”和“词法语义”两层含义，是混合编码，比如0101是权重分配的序列，它和十进制的5是双射的，但是前面的0或者1其实是语义，是人为赋予它的“正负号”，这东西直接参与运算当然会有问题，所以我们必须解决这个混合编码的问题才行。</p>
+<h1 id="权重分配"><a href="#权重分配" class="headerlink" title="权重分配"></a>权重分配</h1><p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E6%9D%83%E9%87%8D.png" alt="image-20210512224326112"></p>
+<p>我们给第一个符号位分配一个权重为 -2的N-1次，其他都是正的权重，这当然是有道理的，如果这一位是0，那么自然这个权重也就没有用了，如果这个数字是1，分配这么大的父权重，后面无论怎么加都逃脱不了它是个负数的命运，所以也没有破坏它的语义，非常的完美，我们把这么分配权重的二进制数称为补码。</p>
+<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>现在我们来看这个权重分配能不能解决问题，+5的补码是0 0101 ，-5的补码是 1 1011，0 0101 + 1 1011是1 00000，啊这不不是0吗，但是总共才五位数啊，所以第一位的1就很正好的被舍弃了，哎，就正好是0了，现在你们是不是已经知道补码的工作方式了。</p>
+<h1 id="还有一些事"><a href="#还有一些事" class="headerlink" title="还有一些事"></a>还有一些事</h1><p>还是以五位二进制数为例，如果用补码表示，最大的正数就是0 1111，就是15；最小的负数就是1 0000，就是-16；那看起来负数比正数多一个数这不对称啊？</p>
+<p>那想到这个说明有动脑思考，但你不觉得缺点什么吗，中间不是还有一个0没算吗，那0是正数还是负数呢？显然我们把数分为正负本是也是不合理的，应该分为负数 和 非负数，这样16个负数16个非负数，正好32个数，完美的闭环。</p>
+<p>所以这又暴露了原先混合编码的时候出现的问题：混合编码会搞出来正0和负0两种东西。</p>
+<h1 id="补码的计算"><a href="#补码的计算" class="headerlink" title="补码的计算"></a>补码的计算</h1><p>以上只是原理，用这种加权法计算补码会很麻烦，所以有一套简明的计算公式：</p>
+<ol>
+<li>先写出原码</li>
+<li>然后再写补码，如果是正数就照抄；如果是负数，符号位置1，其他全部0换1 1换0，然后整个数字再+1，冒了就舍弃</li>
+</ol>
+
+        </div>
+
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+          <!-- 五星评分 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 23889});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<!-- <a target="_blank" rel="noopener" href="https://widgetpack.com" class="wpac-cr">Star Rating WIDGET PACK</a> -->
+          
+        </div>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/%E6%95%B0%E5%80%BC/" style="color: #716e77;">数值<em>·</em></a>
+              
+              <a href="/tags/%E7%A0%81%E5%88%B6/" style="color: #716e77;">码制<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/%E6%8A%80%E6%9C%AF/" style="color: #716e77;">技术</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <!-- <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/JavaScript/" style="font-size: 10px; color: #f06966">JavaScript</a> <a href="/tags/SpringBoot/" style="font-size: 10px; color: #f06966">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px; color: #f06966">SpringSecurity</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/css/" style="font-size: 10px; color: #f06966">css</a> <a href="/tags/git/" style="font-size: 10px; color: #f06966">git</a> <a href="/tags/java/" style="font-size: 10px; color: #f06966">java</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/python3/" style="font-size: 10px; color: #f06966">python3</a> <a href="/tags/rust/" style="font-size: 10px; color: #f06966">rust</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E6%95%B0%E5%80%BC/" style="font-size: 10px; color: #f06966">数值</a> <a href="/tags/%E7%8E%84%E5%AD%A6/" style="font-size: 10px; color: #f06966">玄学</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a> <a href="/tags/%E7%A0%81%E5%88%B6/" style="font-size: 10px; color: #f06966">码制</a> <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 10px; color: #f06966">表情包</a>
+          </div>
+        </div> -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+          
+          
+            <div class="post-nepre full next">
+              
+              <a href="/post/60573.html" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg10.jpg"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg10.jpg">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>SpringBoot实现用户注册登录+邮箱验证</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
 <div id="gitalk-container" class="comment"></div> 
 <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 <script src="/js/md5.min.js"></script>
@@ -332,37 +521,50 @@
 gitalk.render('gitalk-container') 
 </script>
 
-      <div class="single-reward">
-        <div class="reward-open">赏
-          <div class="reward-main">
-            <ul class="reward-row">
-              <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
-              <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
-            </ul>
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+      <section class="author-profile" >
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a href="https://mini.buaihechengzizhi.com" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg" itemprop="image"
+              alt="orangepro" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a href="https://mini.buaihechengzizhi.com" itemprop="url" rel="author">orangepro</a>
+            </h3>
           </div>
         </div>
-      </div>
-      <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
-      </div>
-      <footer class="post-footer">
-        <div class="post-lincenses" style="color: #ff9966;">
-          欢迎转载，转载时请注明来源哦！
-          <br>
-          <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" target="_blank" rel="nofollow">
-            <i class="fa fa-creative-commons" aria-hidden="true"></i>知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>
-        </div>
-        <div class="post-tags">
-        </div>
-        <div class="post-share">
-          <div class="social-share sharehidden share-component"></div>
-          <i class="iconfont show-share icon-forward"></i>
-        </div>
-      </footer><!-- .entry-footer -->
-    </article>
-    <!-- #post-## -->
-    
+        <hr>
+        <p><i class="iconfont icon-write"></i>开心才是第一生产力</p>
+      </section>
+      
+    </main><!-- #main -->
   </div><!-- #primary -->
-  </div>
+</div>
+
+
+<!--评论配置-->
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
 
       <!-- body.end -->
     </div>
