@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>阳光下的橙子</title>
+  
+  <subtitle>流动的音符拨动心弦</subtitle>
+  <link href="https://blog.buaihechengzizhi.com/atom.xml" rel="self"/>
+  
+  <link href="https://blog.buaihechengzizhi.com/"/>
+  <updated>2021-11-17T16:03:25.852Z</updated>
+  <id>https://blog.buaihechengzizhi.com/</id>
+  
+  <author>
+    <name>不爱喝橙子汁</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>在vue3中使用composition api代替vuex</title>
+    <link href="https://blog.buaihechengzizhi.com/post/47683.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/47683.html</id>
+    <published>2021-09-20T07:01:35.000Z</published>
+    <updated>2021-11-17T16:03:25.852Z</updated>
+    
+    
+    <summary type="html">vue3尝鲜</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="vue" scheme="https://blog.buaihechengzizhi.com/tags/vue/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>RxJS速记</title>
+    <link href="https://blog.buaihechengzizhi.com/post/4227.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/4227.html</id>
+    <published>2021-08-25T13:52:33.000Z</published>
+    <updated>2021-11-17T16:02:23.979Z</updated>
+    
+    
+    <summary type="html">RxJS的快速上手</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>数制与补码</title>
+    <link href="https://blog.buaihechengzizhi.com/post/696.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/696.html</id>
+    <published>2021-05-12T14:19:40.000Z</published>
+    <updated>2021-11-17T16:02:23.992Z</updated>
+    
+    
+    <summary type="html">防止犯蠢</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="数值" scheme="https://blog.buaihechengzizhi.com/tags/%E6%95%B0%E5%80%BC/"/>
+    
+    <category term="码制" scheme="https://blog.buaihechengzizhi.com/tags/%E7%A0%81%E5%88%B6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SpringBoot实现用户注册登录+邮箱验证</title>
+    <link href="https://blog.buaihechengzizhi.com/post/60573.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/60573.html</id>
+    <published>2021-03-25T12:14:32.000Z</published>
+    <updated>2021-11-17T16:02:23.979Z</updated>
+    
+    
+    <summary type="html">使用SpringBoot+SpringSecurity完成注册登录的后端服务</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="SpringBoot" scheme="https://blog.buaihechengzizhi.com/tags/SpringBoot/"/>
+    
+    <category term="SpringSecurity" scheme="https://blog.buaihechengzizhi.com/tags/SpringSecurity/"/>
+    
+    <category term="java" scheme="https://blog.buaihechengzizhi.com/tags/java/"/>
+    
+    <category term="玄学" scheme="https://blog.buaihechengzizhi.com/tags/%E7%8E%84%E5%AD%A6/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>normalize.css内容</title>
+    <link href="https://blog.buaihechengzizhi.com/post/12437.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/12437.html</id>
+    <published>2021-02-15T07:26:58.000Z</published>
+    <updated>2021-11-17T16:02:23.980Z</updated>
+    
+    
+    <summary type="html">normalize.css里的内容，方便以后复制</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="css" scheme="https://blog.buaihechengzizhi.com/tags/css/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>rust for beginners</title>
+    <link href="https://blog.buaihechengzizhi.com/post/11241.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/11241.html</id>
+    <published>2021-02-14T15:39:14.000Z</published>
+    <updated>2021-11-17T16:02:23.981Z</updated>
+    
+    
+    <summary type="html">为初学者准备的rust入门（误）</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="rust" scheme="https://blog.buaihechengzizhi.com/tags/rust/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>python3.9新特性</title>
+    <link href="https://blog.buaihechengzizhi.com/post/38561.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/38561.html</id>
+    <published>2021-02-11T13:34:19.000Z</published>
+    <updated>2021-11-17T16:02:23.981Z</updated>
+    
+    
+    <summary type="html">速览python3.9新增特性</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="python3" scheme="https://blog.buaihechengzizhi.com/tags/python3/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaScript中的深拷贝和浅拷贝</title>
+    <link href="https://blog.buaihechengzizhi.com/post/2368.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/2368.html</id>
+    <published>2021-01-23T14:38:33.000Z</published>
+    <updated>2021-11-17T16:02:23.979Z</updated>
+    
+    
+    <summary type="html">简要的阐述了深浅拷贝的方案</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.buaihechengzizhi.com/tags/JavaScript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>在服务器上搭建git仓库</title>
+    <link href="https://blog.buaihechengzizhi.com/post/36801.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/36801.html</id>
+    <published>2021-01-23T07:09:09.000Z</published>
+    <updated>2021-11-17T16:02:23.990Z</updated>
+    
+    
+    <summary type="html">尝试在自己的服务器上搭建一个git仓库</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="git" scheme="https://blog.buaihechengzizhi.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>表情包</title>
+    <link href="https://blog.buaihechengzizhi.com/post/14978.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/14978.html</id>
+    <published>2021-01-20T12:50:39.000Z</published>
+    <updated>2021-11-17T16:02:24.001Z</updated>
+    
+    
+    <summary type="html">暹罗猫？</summary>
+    
+    
+    
+    <category term="生活" scheme="https://blog.buaihechengzizhi.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="表情包" scheme="https://blog.buaihechengzizhi.com/tags/%E8%A1%A8%E6%83%85%E5%8C%85/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>apple m1上的部分问题解决方案</title>
+    <link href="https://blog.buaihechengzizhi.com/post/53806.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/53806.html</id>
+    <published>2021-01-20T06:24:01.000Z</published>
+    <updated>2021-11-17T16:02:23.980Z</updated>
+    
+    
+    <summary type="html">关于M1芯片上的部分解决方案</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="apple m1" scheme="https://blog.buaihechengzizhi.com/tags/apple-m1/"/>
+    
+    <category term="preview" scheme="https://blog.buaihechengzizhi.com/tags/preview/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>壁纸</title>
+    <link href="https://blog.buaihechengzizhi.com/post/13625.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/13625.html</id>
+    <published>2021-01-19T07:08:00.000Z</published>
+    <updated>2021-11-17T16:02:23.990Z</updated>
+    
+    
+    <summary type="html">精选壁纸</summary>
+    
+    
+    
+    <category term="生活" scheme="https://blog.buaihechengzizhi.com/categories/%E7%94%9F%E6%B4%BB/"/>
+    
+    
+    <category term="壁纸" scheme="https://blog.buaihechengzizhi.com/tags/%E5%A3%81%E7%BA%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>搭建CDN服务</title>
+    <link href="https://blog.buaihechengzizhi.com/post/47211.html"/>
+    <id>https://blog.buaihechengzizhi.com/post/47211.html</id>
+    <published>2021-01-18T18:54:26.000Z</published>
+    <updated>2021-11-17T16:02:23.991Z</updated>
+    
+    
+    <summary type="html">使用jsdelivr和github搭建CDN服务</summary>
+    
+    
+    
+    <category term="技术" scheme="https://blog.buaihechengzizhi.com/categories/%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="白嫖" scheme="https://blog.buaihechengzizhi.com/tags/%E7%99%BD%E5%AB%96/"/>
+    
+    <category term="CDN" scheme="https://blog.buaihechengzizhi.com/tags/CDN/"/>
+    
+  </entry>
+  
+</feed>

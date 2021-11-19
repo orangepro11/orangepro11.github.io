@@ -1,0 +1,1959 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <!-- cungudafa百度收录验证编号 -->
+  <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">SpringBoot实现用户注册登录+邮箱验证 | 阳光下的橙子</title>
+  
+    <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css" type="text/css" media="all" id="saukra_css-css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css" media="all">  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/tags.css" media="all">
+  
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/fonts/LOGO/logo.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+
+  <!-- 分析 -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b05d6287bdeab72f3886bffe3cff054a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+  
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+  " type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+    * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+    * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+    */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "ornage-juice你不觉得阳光和橙子很配吗";
+    mashiro_option.author_name = "你不觉得阳光和橙子很配吗";
+    mashiro_option.site_url = "https://mini.buaihechengzizhi.com/";
+    mashiro_option.v_appId = "U5VwYYeYlmI7C8UuoWxHrDBz-MdYXbMMI";//
+    mashiro_option.v_appKey = "SFxC9o4DBWIBfhIBOTHlaXGf";//
+    mashiro_option.mathjax = "1";
+    mashiro_option.copyright_enable = "true" ;
+    mashiro_option.copyright_minCharNumber = parseInt("120") ;
+    mashiro_option.copyright_description = "本文章著作权归作者所有，任何形式的转载都请注明出处。" ;
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+    // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1370.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1461.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1462.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1463.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1464.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_0868.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg3.jpg".split(",");
+    var bgindex = Math.floor(Math.random()*bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="阳光下的橙子" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head> 
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- Dynamic sliders -->
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <!-- Main content -->
+  <section id="main-container">
+    <!-- Top menu -->
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com/">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>开心才是第一生产力</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  
+  <div id="video-container">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <!-- banner -->
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+        <span class="site-title">
+            <span class="logolink logo">
+                <a href="/">
+                    <ruby>
+                    <span class="sakuraso">橙子</span>
+                    <span class="no">の</span>
+                    <span class="shironeko">小屋</span>
+                    <rp></rp>
+                    <rt class="logo">ornage-juice</rt>
+                    <rp></rp>
+                    </ruby>
+                  </a>
+            </span>
+          </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags">
+                          <i class="fa fa-tags" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/artitalk/">
+                          <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                          说说
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/photos/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          相册
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      
+      <!-- body -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg10.jpg);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg10.jpg">
+  </div>
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">SpringBoot实现用户注册登录+邮箱验证</h1>
+    <p class="entry-census">
+      
+      <span class="post-meta-item">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </span>
+      
+      
+      <span class="post-meta-item">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com"> orangepro </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2021-3-25 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
+
+        
+        <!-- 阅读时长统计 -->
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-book"></i>
+    <span class="post-meta-item-text">字数统计: </span>
+    <!-- 安装插件npm install hexo-wordcount --save -->
+    <span class="post-count">4.5k字</span>
+  </span>
+</span>
+<span class="bull">
+·</span>
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+    <span class="post-meta-item-text">阅读时长≈</span>
+    <span class="post-count">22分钟</span>
+  </span>
+</span>
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/60573"> </span>
+              </span>
+          </span> -->
+    </p>
+  </header>
+</div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="获取全部源代码"><a href="#获取全部源代码" class="headerlink" title="获取全部源代码"></a>获取全部源代码</h2><p>演示项目的源代码托管位置：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/orangepro11/springboot-login-register-email">https://github.com/orangepro11/springboot-login-register-email</a></p>
+<h2 id="初始化项目"><a href="#初始化项目" class="headerlink" title="初始化项目"></a>初始化项目</h2><p>访问<a target="_blank" rel="noopener" href="http://start.spring.io,项目名称随意,直接来到依赖添加界面,选择lombok,spring/">http://start.spring.io,项目名称随意，直接来到依赖添加界面，选择Lombok，Spring</a> Web，</p>
+<p>Spring Security,PostgreSQL Driver,Spirng Data JPA，Java Mail Sender</p>
+<p>用IDEA打开项目，第一步先找到application.properties,重命名为application.yaml，填入以下内容，根据实际情况更改</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">error</span><span class="token punctuation">:</span>
+    <span class="token key atrule">include-message</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">include-binding-errors</span><span class="token punctuation">:</span> always
+
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>postgresql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>5432/registration
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> postgres
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> password
+  <span class="token key atrule">jpa</span><span class="token punctuation">:</span>
+    <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ddl-auto</span><span class="token punctuation">:</span> create<span class="token punctuation">-</span>drop
+    <span class="token key atrule">properties</span><span class="token punctuation">:</span>
+      <span class="token key atrule">hibernate</span><span class="token punctuation">:</span> </code></pre>
+<blockquote>
+<p>数据库使用Postgresql，这个数据库的具体安装使用不会再本节讲述</p>
+</blockquote>
+<h2 id="新建用户类"><a href="#新建用户类" class="headerlink" title="新建用户类"></a>新建用户类</h2><p>在com.example.demo下新建appuser.AppUser.java（appuser包下的AppUser类，以后不再具体说明）</p>
+<p>然后让这个类实现UserDetails接口，当然要实现这个接口下的所有方法，这个用IDEA的快捷键去完成，这里就不教怎么做了，然后定义id,name,username,email,password等字段，用来表示我们的一个用户。同时额外要添加一个目前尚不存在，但稍后就会创建的AppUserRole字段标识用户的权限。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUser</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetails</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Long id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String username<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> AppUserRole appUserRole<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// will created next.</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">GrantedAuthority</span><span class="token operator">></span> <span class="token function">getAuthorities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonLocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isCredentialsNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后我们在appuser包下创建ApppUserRole.java，类型是enum。这个枚举类型的定义非常简单，记录所有的用户权限列表可能的取值就行，我们这个演示用例里只有用户和管理员。</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">enum</span> AppUserRole <span class="token punctuation">{</span>
+    USER<span class="token punctuation">,</span>
+    ADMIN<span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这样我们就解决了AppUser.java类里的报错了，之后我们还需要给AppUser添加一点点的辅助字段，分别名为locked和enabled。</p>
+<p>最后的AppUser类的属性长这个样子：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUser</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetails</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Long id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String username<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> AppUserRole appUserRole<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean locked<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean enabled<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>一步一步来，现在我们要定义它的getAuthorities方法，这个方法在我们实现UserDetails接口的时候就已经有了，现在我们需要稍微改动它的逻辑以契合我们的需求。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">GrantedAuthority</span><span class="token operator">></span> <span class="token function">getAuthorities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  SimpleGrantedAuthority authority <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleGrantedAuthority</span><span class="token punctuation">(</span>appUserRole<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> Collections<span class="token punctuation">.</span><span class="token function">singletonList</span><span class="token punctuation">(</span>authority<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>同理我们顺势更改getUsername(),getPassword()方法，这个就是简单的getter和setter，返回自身属性就可以了，非常的简单：</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> String <span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> password<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> String <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> username<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>至于isAccountNonExpired()，这个暂时让它返回true；isAccountNonLocked()则返回自身的locked，isCredentialsNonExpired()则返true，isEnabled()则返回自身的enabled.</p>
+<p>然后最后的一步，利用Lombok给我们的类添加getter和setter,equals，hashcode，无参构造函数，当然你用IDEA的快捷键也是一样的，不过Lombok更简单，代码也会简洁一点，方法就是添加一大堆Lombok提供的注解，非常的简单。</p>
+<p>然后我们再添加包含除了id以外的所有参数的构造函数，用IDEA的快捷键完成。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Getter</span>
+<span class="token annotation punctuation">@Setter</span>
+<span class="token annotation punctuation">@EqualsAndHashCode</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUser</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetails</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> Long id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String username<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> AppUserRole appUserRole<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean locked<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean enabled<span class="token punctuation">;</span>
+
+      <span class="token keyword">public</span> <span class="token function">AppUser</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> String username<span class="token punctuation">,</span> String email<span class="token punctuation">,</span> String password<span class="token punctuation">,</span> AppUserRole appUserRole<span class="token punctuation">,</span> Boolean locked<span class="token punctuation">,</span> Boolean enabled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>username <span class="token operator">=</span> username<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>password <span class="token operator">=</span> password<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>appUserRole <span class="token operator">=</span> appUserRole<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>locked <span class="token operator">=</span> locked<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>enabled <span class="token operator">=</span> enabled<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">GrantedAuthority</span><span class="token operator">></span> <span class="token function">getAuthorities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SimpleGrantedAuthority authority <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleGrantedAuthority</span><span class="token punctuation">(</span>appUserRole<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> Collections<span class="token punctuation">.</span><span class="token function">singletonList</span><span class="token punctuation">(</span>authority<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> password<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> username<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonLocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> locked<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isCredentialsNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> enabled<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后就是把它做成数据库模型，因为我们要用数据库去保存用户数据。</p>
+<p>添加@Entity注解标明它是一个模型，再给Id字段添加一些能标明它是个主键的注解，给appUserRole字段标明是枚举类型。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Getter</span>
+<span class="token annotation punctuation">@Setter</span>
+<span class="token annotation punctuation">@EqualsAndHashCode</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUser</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetails</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@SequenceGenerator</span><span class="token punctuation">(</span>
+            name <span class="token operator">=</span> <span class="token string">"student_sequence"</span><span class="token punctuation">,</span>
+            sequenceName <span class="token operator">=</span> <span class="token string">"student_sequence"</span><span class="token punctuation">,</span>
+            allocationSize <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>
+            strategy <span class="token operator">=</span> GenerationType<span class="token punctuation">.</span>SEQUENCE<span class="token punctuation">,</span>
+            generator <span class="token operator">=</span> <span class="token string">"student_sequence"</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">private</span> Long id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String name<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String username<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+      <span class="token annotation punctuation">@Enumerated</span><span class="token punctuation">(</span>EnumType<span class="token punctuation">.</span>STRING<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> AppUserRole appUserRole<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean locked<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean enabled<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">AppUser</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> String username<span class="token punctuation">,</span> String email<span class="token punctuation">,</span> String password<span class="token punctuation">,</span> AppUserRole appUserRole<span class="token punctuation">,</span> Boolean locked<span class="token punctuation">,</span> Boolean enabled<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>username <span class="token operator">=</span> username<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>password <span class="token operator">=</span> password<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>appUserRole <span class="token operator">=</span> appUserRole<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>locked <span class="token operator">=</span> locked<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>enabled <span class="token operator">=</span> enabled<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">GrantedAuthority</span><span class="token operator">></span> <span class="token function">getAuthorities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SimpleGrantedAuthority authority <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleGrantedAuthority</span><span class="token punctuation">(</span>appUserRole<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> Collections<span class="token punctuation">.</span><span class="token function">singletonList</span><span class="token punctuation">(</span>authority<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> password<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> username<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonLocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> locked<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isCredentialsNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> enabled<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后关掉这个文件，我们暂时用不到它了。</p>
+<h2 id="用户service"><a href="#用户service" class="headerlink" title="用户service"></a>用户service</h2><p>在appuser包下新建AppUserService.java，实现UserDetailService接口。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUserService</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetailsService</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> UserDetails <span class="token function">loadUserByUsername</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token keyword">throws</span> UsernameNotFoundException <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> null<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="AppUserRepository"><a href="#AppUserRepository" class="headerlink" title="AppUserRepository"></a>AppUserRepository</h2><p>在appuser包下新建AppUserRepository.java接口，这个接口就是向上提供增删改查的API，我们先给它添加上根据邮箱寻找用户的API，当然这里只给出方法原型的定义就可以了。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
+<span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>readOnly <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AppUserRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>AppUser<span class="token punctuation">,</span>Long<span class="token operator">></span> <span class="token punctuation">{</span>
+    Optional<span class="token operator">&lt;</span>AppUser<span class="token operator">></span> <span class="token function">findByEmail</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="完善service类"><a href="#完善service类" class="headerlink" title="完善service类"></a>完善service类</h2><p>这个service是连接controller和repository的中间层，也是我们所谓业务逻辑所在的核心层，首先肯定要依赖repository以使用它提供的API，我们采用Spring提供的依赖注入的方式完成。</p>
+<p>AppUserService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUserService</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetailsService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> String USER_NOT_FOUND_MSG <span class="token operator">=</span> <span class="token string">"user with email %s not found÷"</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> AppUserRepository appUserRepository<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> UserDetails <span class="token function">loadUserByUsername</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span> <span class="token keyword">throws</span> UsernameNotFoundException <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> appUserRepository<span class="token punctuation">.</span><span class="token function">findByEmail</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">new</span> <span class="token class-name">UsernameNotFoundException</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>USER_NOT_FOUND_MSG<span class="token punctuation">,</span>email<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="Controller"><a href="#Controller" class="headerlink" title="Controller"></a>Controller</h2><p>Controller是用来接受HTTP请求并做出HTTP响应的，处于应用程序的最上层，在com.example.demo下新建一个包名为registration，新建类名为registration.RegistrationController.java。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"api/v1/registration"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationController</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre>
+<p>先放着，我们还没有完善Controller的能力，同一个包下创建RegistrationRequest.java。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Getter</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token annotation punctuation">@EqualsAndHashCode</span>
+<span class="token annotation punctuation">@ToString</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String firstName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String lastName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> String password<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>再新建文件RegistrationService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> String <span class="token function">register</span><span class="token punctuation">(</span>RegistrationRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"works"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后我们回去补充一下Controller</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"api/v1/registration"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationController</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> RegistrationService registrationService<span class="token punctuation">;</span>
+
+      <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">register</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> RegistrationRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> registrationService<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>新建包security,新建文件PasswordEncoder.java；然后在security包下再新建config，再新建WebSecurityConfig.java</p>
+<p>WebSecurityConfig.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token annotation punctuation">@EnableWebSecurity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WebSecurityConfig</span> <span class="token keyword">extends</span> <span class="token class-name">WebSecurityConfigurerAdapter</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> AppUserService appUserService<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> BCryptPasswordEncoder bCryptPasswordEncoder<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span>HttpSecurity http<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        http
+                <span class="token punctuation">.</span><span class="token function">csrf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">disable</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">authorizeRequests</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">antMatchers</span><span class="token punctuation">(</span><span class="token string">"/api/v*/registration/**"</span><span class="token punctuation">)</span>
+                    <span class="token punctuation">.</span><span class="token function">permitAll</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">anyRequest</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">authenticated</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">and</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+                <span class="token punctuation">.</span><span class="token function">formLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">configure</span><span class="token punctuation">(</span>AuthenticationManagerBuilder auth<span class="token punctuation">)</span> <span class="token keyword">throws</span> Exception <span class="token punctuation">{</span>
+        auth<span class="token punctuation">.</span><span class="token function">authenticationProvider</span><span class="token punctuation">(</span><span class="token function">daoAuthenticationProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> DaoAuthenticationProvider <span class="token function">daoAuthenticationProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        DaoAuthenticationProvider provider <span class="token operator">=</span>
+                <span class="token keyword">new</span> <span class="token class-name">DaoAuthenticationProvider</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        provider<span class="token punctuation">.</span><span class="token function">setPasswordEncoder</span><span class="token punctuation">(</span>bCryptPasswordEncoder<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        provider<span class="token punctuation">.</span><span class="token function">setUserDetailsService</span><span class="token punctuation">(</span>appUserService<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> provider<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="PasswordEncoder"><a href="#PasswordEncoder" class="headerlink" title="PasswordEncoder"></a>PasswordEncoder</h2><p>这个文件里定义密码的加密解密方式，我们用BCrypt算法完成。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Configuration</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PasswordEncoder</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Bean</span>
+    <span class="token keyword">public</span> BCryptPasswordEncoder <span class="token function">bCryptPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">BCryptPasswordEncoder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>启动项目，用postman访问localhost:8080/api/v1/registration, 请求方法是post，数据格式如下：</p>
+<pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"firstName"</span><span class="token operator">:</span> <span class="token string">"Bilal"</span><span class="token punctuation">,</span>
+    <span class="token property">"lastName"</span><span class="token operator">:</span> <span class="token string">"Ahmend"</span><span class="token punctuation">,</span> 
+    <span class="token property">"email"</span><span class="token operator">:</span> <span class="token string">"bila2.ahed@gmail.com"</span><span class="token punctuation">,</span>
+    <span class="token property">"password"</span><span class="token operator">:</span> <span class="token string">"password"</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="EmailValidator"><a href="#EmailValidator" class="headerlink" title="EmailValidator"></a>EmailValidator</h2><p>这个文件完成以下功能；用户注册的时候往用户的邮箱发送一封邮件，内容包含验证连接，用户点击链接后完成验证。不难理解对吧，日常访问网站经常见到这种操作，这是为了保证邮箱的可靠性，防止滥注册，是基本的保护手段之一。</p>
+<p>新建文件rergistration.EmailValidator.java类，</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmailValidator</span> <span class="token keyword">implements</span> <span class="token class-name">Predicate</span><span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">test</span><span class="token punctuation">(</span>String s<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//TODO: Regex to validate email</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>暂时让它返回true，验证逻辑以后补充，先把流程走通。</p>
+</blockquote>
+<p>修改文件RegistrationService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> EmailValidator emailValidator<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> String <span class="token function">register</span><span class="token punctuation">(</span>RegistrationRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> isValidEmail <span class="token operator">=</span> emailValidator<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isValidEmail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email not valid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> <span class="token string">"works"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>修改AppUserService.java，添加一个方法：</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> String <span class="token function">singUpUser</span><span class="token punctuation">(</span>AppUser appUser<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="修改AppUser"><a href="#修改AppUser" class="headerlink" title="修改AppUser"></a>修改AppUser</h2><p>现在我们觉得AppUser的模型设计不太符合我们的需求，需要做出一点改动:</p>
+<p>AppUser.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> com<span class="token punctuation">.</span>orange<span class="token punctuation">.</span>logindemo<span class="token punctuation">.</span>appuser<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> lombok<span class="token punctuation">.</span>EqualsAndHashCode<span class="token punctuation">;</span>
+<span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Getter<span class="token punctuation">;</span>
+<span class="token keyword">import</span> lombok<span class="token punctuation">.</span>NoArgsConstructor<span class="token punctuation">;</span>
+<span class="token keyword">import</span> lombok<span class="token punctuation">.</span>Setter<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>core<span class="token punctuation">.</span>GrantedAuthority<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>core<span class="token punctuation">.</span>authority<span class="token punctuation">.</span>SimpleGrantedAuthority<span class="token punctuation">;</span>
+<span class="token keyword">import</span> org<span class="token punctuation">.</span>springframework<span class="token punctuation">.</span>security<span class="token punctuation">.</span>core<span class="token punctuation">.</span>userdetails<span class="token punctuation">.</span>UserDetails<span class="token punctuation">;</span>
+
+<span class="token keyword">import</span> javax<span class="token punctuation">.</span>persistence<span class="token punctuation">.</span>*<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Collection<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Collections<span class="token punctuation">;</span>
+
+<span class="token annotation punctuation">@Getter</span>
+<span class="token annotation punctuation">@Setter</span>
+<span class="token annotation punctuation">@EqualsAndHashCode</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUser</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetails</span> <span class="token punctuation">{</span>
+
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@SequenceGenerator</span><span class="token punctuation">(</span>
+            name <span class="token operator">=</span> <span class="token string">"student_sequence"</span><span class="token punctuation">,</span>
+            sequenceName <span class="token operator">=</span> <span class="token string">"student_sequence"</span><span class="token punctuation">,</span>
+            allocationSize <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>
+            strategy <span class="token operator">=</span> GenerationType<span class="token punctuation">.</span>SEQUENCE<span class="token punctuation">,</span>
+            generator <span class="token operator">=</span> <span class="token string">"student_sequence"</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">private</span> Long id<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String firstName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String lastName<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String email<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> String password<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Enumerated</span><span class="token punctuation">(</span>EnumType<span class="token punctuation">.</span>STRING<span class="token punctuation">)</span>
+    <span class="token keyword">private</span> AppUserRole appUserRole<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean locked<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> Boolean enabled<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token function">AppUser</span><span class="token punctuation">(</span>String firstName<span class="token punctuation">,</span> String lastName<span class="token punctuation">,</span> String email<span class="token punctuation">,</span> String password<span class="token punctuation">,</span> AppUserRole appUserRole<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>firstName <span class="token operator">=</span> firstName<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>lastName <span class="token operator">=</span> lastName<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>email <span class="token operator">=</span> email<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>password <span class="token operator">=</span> password<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>appUserRole <span class="token operator">=</span> appUserRole<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> Collection<span class="token operator">&lt;</span><span class="token operator">?</span> <span class="token keyword">extends</span> <span class="token class-name">GrantedAuthority</span><span class="token operator">></span> <span class="token function">getAuthorities</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SimpleGrantedAuthority authority <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SimpleGrantedAuthority</span><span class="token punctuation">(</span>appUserRole<span class="token punctuation">.</span><span class="token function">name</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> Collections<span class="token punctuation">.</span><span class="token function">singletonList</span><span class="token punctuation">(</span>authority<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> password<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">getLastName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> lastName<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> String <span class="token function">getUsername</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> email<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isAccountNonLocked</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> locked<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isCredentialsNonExpired</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> enabled<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="继续完善RegistrationService"><a href="#继续完善RegistrationService" class="headerlink" title="继续完善RegistrationService"></a>继续完善RegistrationService</h2><pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> AppUserService appUserService<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> EmailValidator emailValidator<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> String <span class="token function">register</span><span class="token punctuation">(</span>RegistrationRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> isValidEmail <span class="token operator">=</span> emailValidator<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isValidEmail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email not valid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> appUserService<span class="token punctuation">.</span><span class="token function">singUpUser</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">AppUser</span><span class="token punctuation">(</span>
+                        request<span class="token punctuation">.</span><span class="token function">getFirstName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getLastName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        AppUserRole<span class="token punctuation">.</span>USER
+                <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这一次调用signUpUser的时候我们要存到数据库确认一下交互是否正常，所以要调用一下存到数据库的方法：</p>
+<p>AppUserService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> String <span class="token function">singUpUser</span><span class="token punctuation">(</span>AppUser appUser<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> userExist <span class="token operator">=</span> appUserRepository<span class="token punctuation">.</span><span class="token function">findByEmail</span><span class="token punctuation">(</span>appUser<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>userExist<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email already taken"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        String encodedPassword <span class="token operator">=</span> bCryptPasswordEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>appUser<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUser<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>encodedPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUserRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>appUser<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// save user to dataabse</span>
+        <span class="token comment" spellcheck="true">//TODO: Send confirmation token</span>
+        <span class="token keyword">return</span> <span class="token string">"it works"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span></code></pre>
+<p>启动项目，使用postman发送请求，再用数据库可视化管理工具（DataGrip 或者 Navicate），确实看到有一条数据存了进来，但是locked和enabled字段为空，原因是我们在最后一次修改AppUser的时候在构造函数中把它们去掉了，导致他们没有初始值，所以稍微修正一下模型给它个默认值：</p>
+<p>AppUser.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">private</span> Boolean locked <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+<span class="token keyword">private</span> Boolean enabled <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span></code></pre>
+<p>这样就可以了。</p>
+<h2 id="ConfirmationToken"><a href="#ConfirmationToken" class="headerlink" title="ConfirmationToken"></a>ConfirmationToken</h2><p>现在来到验证邮箱的环节，首先为了更好的提供验证服务，我们需要把token字段存储到数据库中，新建文件registration.token.ConfirmationToken.java类</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Getter</span>
+<span class="token annotation punctuation">@Setter</span>
+<span class="token annotation punctuation">@NoArgsConstructor</span>
+<span class="token annotation punctuation">@Entity</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConfirmationToken</span> <span class="token punctuation">{</span>
+    <span class="token annotation punctuation">@Id</span>
+    <span class="token annotation punctuation">@SequenceGenerator</span><span class="token punctuation">(</span>
+            name <span class="token operator">=</span> <span class="token string">"confirmation_token_sequence"</span><span class="token punctuation">,</span>
+            sequenceName <span class="token operator">=</span> <span class="token string">"confirmation_token_sequence"</span><span class="token punctuation">,</span>
+            allocationSize <span class="token operator">=</span> <span class="token number">1</span>
+    <span class="token punctuation">)</span>
+    <span class="token annotation punctuation">@GeneratedValue</span><span class="token punctuation">(</span>
+            strategy <span class="token operator">=</span> GenerationType<span class="token punctuation">.</span>SEQUENCE<span class="token punctuation">,</span>
+            generator <span class="token operator">=</span> <span class="token string">"confirmation_token_sequence"</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">private</span> Long id<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> String token<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> LocalDateTime createdAt<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@Column</span><span class="token punctuation">(</span>nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">)</span>
+    <span class="token keyword">private</span> LocalDateTime expiresAt<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> LocalDateTime confirmedAt<span class="token punctuation">;</span>
+    <span class="token annotation punctuation">@ManyToOne</span>
+    <span class="token annotation punctuation">@JoinColumn</span><span class="token punctuation">(</span>
+            nullable <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+            name <span class="token operator">=</span> <span class="token string">"app_user_id"</span>
+    <span class="token punctuation">)</span>
+    <span class="token keyword">private</span> AppUser appUser<span class="token punctuation">;</span>
+
+      <span class="token keyword">public</span> <span class="token function">ConfirmationToken</span><span class="token punctuation">(</span>String token<span class="token punctuation">,</span> LocalDateTime createdAt<span class="token punctuation">,</span> LocalDateTime expiresAt<span class="token punctuation">,</span> AppUser appUser<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>token <span class="token operator">=</span> token<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>createdAt <span class="token operator">=</span> createdAt<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>expiresAt <span class="token operator">=</span> expiresAt<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>appUser <span class="token operator">=</span> appUser<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="ConfirmationTokenRepository"><a href="#ConfirmationTokenRepository" class="headerlink" title="ConfirmationTokenRepository"></a>ConfirmationTokenRepository</h2><p>还是老套路，向上提供整删改查的API，不同的是我们需要额外给它添加一个方法名为<code>findByToken</code>，通过token寻找记录，名字不要随便起，这个命名是有严格规范的，否则会影响程序的正常运行。</p>
+<p>token.ConfirmationTokenRepository.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ConfirmationTokenRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>ConfirmationToken<span class="token punctuation">,</span> Long<span class="token operator">></span> <span class="token punctuation">{</span>
+    Optional<span class="token operator">&lt;</span>ConfirmationToken<span class="token operator">></span> <span class="token function">findByToken</span><span class="token punctuation">(</span>String token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="ConfirmationTokenService"><a href="#ConfirmationTokenService" class="headerlink" title="ConfirmationTokenService"></a>ConfirmationTokenService</h2><p>这一层会和控制器交互。</p>
+<p>token.ConfirmationTokenService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConfirmationTokenService</span> <span class="token punctuation">{</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ConfirmationTokenRepository confirmationTokenRepository<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveConfirmationToken</span><span class="token punctuation">(</span>ConfirmationToken token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        confirmationTokenRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="完善AppUserService"><a href="#完善AppUserService" class="headerlink" title="完善AppUserService"></a>完善AppUserService</h2><p>还记得我们在AppUserService里留的todo注释吗，现在我们去完善它。</p>
+<p>AppUserService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUserService</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetailsService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> String USER_NOT_FOUND_MSG <span class="token operator">=</span> <span class="token string">"user with email %s not found"</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> AppUserRepository appUserRepository<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> BCryptPasswordEncoder bCryptPasswordEncoder<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ConfirmationTokenService confirmationTokenService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> UserDetails <span class="token function">loadUserByUsername</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span> <span class="token keyword">throws</span> UsernameNotFoundException <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> appUserRepository<span class="token punctuation">.</span><span class="token function">findByEmail</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">new</span> <span class="token class-name">UsernameNotFoundException</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>USER_NOT_FOUND_MSG<span class="token punctuation">,</span>email<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">singUpUser</span><span class="token punctuation">(</span>AppUser appUser<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> userExist <span class="token operator">=</span> appUserRepository<span class="token punctuation">.</span><span class="token function">findByEmail</span><span class="token punctuation">(</span>appUser<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>userExist<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email already taken"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        String encodedPassword <span class="token operator">=</span> bCryptPasswordEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>appUser<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUser<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>encodedPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUserRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>appUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        String token <span class="token operator">=</span> UUID<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ConfirmationToken confirmationToken <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConfirmationToken</span><span class="token punctuation">(</span>
+                token<span class="token punctuation">,</span>
+                LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">plusMinutes</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                appUser
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        confirmationTokenService<span class="token punctuation">.</span><span class="token function">saveConfirmationToken</span><span class="token punctuation">(</span>confirmationToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//TODO: SEND EMAIL</span>
+        <span class="token keyword">return</span> token<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>启动项目，确认一切都按预期工作。</p>
+<h2 id="设置验证时间"><a href="#设置验证时间" class="headerlink" title="设置验证时间"></a>设置验证时间</h2><p>其实它什么时候完成的验证对我吗并没有那么重要，但是它有没有完成验证对我们来说很重要，只不过我们选择了包容信息量更大的字段而已，你也可以用一个简单的布尔类型完成这个需求。现在往ConfirmationTokenRepository.java里再添加一个方法以满足我们的需求：设置验证时间的方法。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ConfirmationTokenRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>ConfirmationToken<span class="token punctuation">,</span> Long<span class="token operator">></span> <span class="token punctuation">{</span>
+    Optional<span class="token operator">&lt;</span>ConfirmationToken<span class="token operator">></span> <span class="token function">findByToken</span><span class="token punctuation">(</span>String token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Transactional</span>
+    <span class="token annotation punctuation">@Modifying</span>
+    <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span><span class="token string">"UPDATE ConfirmationToken c SET c.confirmedAt = ?2 WHERE c.token = ?1"</span><span class="token punctuation">)</span>
+    <span class="token keyword">int</span> <span class="token function">updateConfirmedAt</span><span class="token punctuation">(</span>String token<span class="token punctuation">,</span> LocalDateTime confirmedAt<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这个方法的使用非常好理解：在用户完成确认的那一刻我们就该填入这个字段，标识用户已经完成了邮箱验证，系统认可了这个用户。</p>
+<p>相应的我们要在Service层中也添加对应的方法：</p>
+<p>ConfirmationTokenService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">setConfirmedAt</span><span class="token punctuation">(</span>String token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> confirmationTokenRepository<span class="token punctuation">.</span><span class="token function">updateConfirmedAt</span><span class="token punctuation">(</span>token<span class="token punctuation">,</span> LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后回到和我们的控制器直接交互的Service：RegistrationService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> AppUserService appUserService<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> EmailValidator emailValidator<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ConfirmationTokenService confirmationTokenService<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> String <span class="token function">register</span><span class="token punctuation">(</span>RegistrationRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> isValidEmail <span class="token operator">=</span> emailValidator<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isValidEmail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email not valid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> appUserService<span class="token punctuation">.</span><span class="token function">singUpUser</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">AppUser</span><span class="token punctuation">(</span>
+                        request<span class="token punctuation">.</span><span class="token function">getFirstName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getLastName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        AppUserRole<span class="token punctuation">.</span>USER
+                <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Transactional</span>
+    <span class="token keyword">public</span> String <span class="token function">confirmToken</span><span class="token punctuation">(</span>String token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ConfirmationToken confirmationToken <span class="token operator">=</span> confirmationTokenService<span class="token punctuation">.</span>
+                <span class="token function">getToken</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"token not found"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>confirmationToken<span class="token punctuation">.</span><span class="token function">getConfirmedAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email already confirmed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        LocalDateTime expiresAt <span class="token operator">=</span> confirmationToken<span class="token punctuation">.</span><span class="token function">getExpiresAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>expiresAt<span class="token punctuation">.</span><span class="token function">isBefore</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"token expired"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        confirmationTokenService<span class="token punctuation">.</span><span class="token function">setConfirmedAt</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUserService<span class="token punctuation">.</span><span class="token function">enableAppUser</span><span class="token punctuation">(</span>confirmationToken<span class="token punctuation">.</span><span class="token function">getAppUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"confirmed"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>添加confirmToken方法。</p>
+<p>最后，回到最上层的控制器，去处理HTTP请求：</p>
+<p>RegistrationController.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@RestController</span>
+<span class="token annotation punctuation">@RequestMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"api/v1/registration"</span><span class="token punctuation">)</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationController</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> RegistrationService registrationService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@PostMapping</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">register</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestBody</span> RegistrationRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> registrationService<span class="token punctuation">.</span><span class="token function">register</span><span class="token punctuation">(</span>request<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@GetMapping</span><span class="token punctuation">(</span>path <span class="token operator">=</span> <span class="token string">"confirm"</span><span class="token punctuation">)</span>
+    <span class="token keyword">public</span> String <span class="token function">confirm</span><span class="token punctuation">(</span><span class="token annotation punctuation">@RequestParam</span><span class="token punctuation">(</span><span class="token string">"token"</span><span class="token punctuation">)</span> String token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> registrationService<span class="token punctuation">.</span><span class="token function">confirmToken</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>启动项目，访问<code>localhost:8080/api/v1/registration/confirm?token=[token]]</code>，这个[token]的值从<code>localhost:8080/api/v1/registration/</code>API的响应中取得。</p>
+<h2 id="发送邮件"><a href="#发送邮件" class="headerlink" title="发送邮件"></a>发送邮件</h2><p>实际上我们的流程到此为止已经全部跑通了(前提是你也和我一样顺利)，最后的最后就是向用户发送邮件的功能了。</p>
+<p>在com.example.demo包下新建一个包名为email，再新建一个interface名为email.EmailSender.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">EmailSender</span> <span class="token punctuation">{</span>
+    <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span>String to<span class="token punctuation">,</span> String email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>相同包下新建EmaiLService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">EmailService</span> <span class="token keyword">implements</span> <span class="token class-name">EmailSender</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> Logger LOGGER <span class="token operator">=</span> LoggerFactory<span class="token punctuation">.</span><span class="token function">getLogger</span><span class="token punctuation">(</span>EmailService<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> JavaMailSender mailSender<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token annotation punctuation">@Async</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">send</span><span class="token punctuation">(</span>String to<span class="token punctuation">,</span> String email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">try</span> <span class="token punctuation">{</span>
+            MimeMessage  mimeMessage <span class="token operator">=</span> mailSender<span class="token punctuation">.</span><span class="token function">createMimeMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            MimeMessageHelper helper <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MimeMessageHelper</span><span class="token punctuation">(</span>mimeMessage<span class="token punctuation">,</span><span class="token string">"utf-8"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setText</span><span class="token punctuation">(</span>email<span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setTo</span><span class="token punctuation">(</span>to<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setSubject</span><span class="token punctuation">(</span><span class="token string">"Confirm Your Email"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            helper<span class="token punctuation">.</span><span class="token function">setFrom</span><span class="token punctuation">(</span><span class="token string">"login@noreply.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">MessagingException</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            LOGGER<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token string">"fail to send email"</span><span class="token punctuation">,</span> e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"fail to send email"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>来到RegistrationService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RegistrationService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> AppUserService appUserService<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> EmailValidator emailValidator<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ConfirmationTokenService confirmationTokenService<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> EmailSender emailSender<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> String <span class="token function">register</span><span class="token punctuation">(</span>RegistrationRequest request<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> isValidEmail <span class="token operator">=</span> emailValidator<span class="token punctuation">.</span><span class="token function">test</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>isValidEmail<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email not valid"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        String token <span class="token operator">=</span> appUserService<span class="token punctuation">.</span><span class="token function">singUpUser</span><span class="token punctuation">(</span>
+                <span class="token keyword">new</span> <span class="token class-name">AppUser</span><span class="token punctuation">(</span>
+                        request<span class="token punctuation">.</span><span class="token function">getFirstName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getLastName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        request<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                        AppUserRole<span class="token punctuation">.</span>USER
+                <span class="token punctuation">)</span>
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        String link <span class="token operator">=</span> <span class="token string">"http://localhost:8080/registration/confirm?token="</span> <span class="token operator">+</span> token<span class="token punctuation">;</span>
+        emailSender<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">buildEmail</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getFirstName</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>link<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> link<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Transactional</span>
+    <span class="token keyword">public</span> String <span class="token function">confirmToken</span><span class="token punctuation">(</span>String token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        ConfirmationToken confirmationToken <span class="token operator">=</span> confirmationTokenService<span class="token punctuation">.</span>
+                <span class="token function">getToken</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">></span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"token not found"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>confirmationToken<span class="token punctuation">.</span><span class="token function">getConfirmedAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email already confirmed"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        LocalDateTime expiresAt <span class="token operator">=</span> confirmationToken<span class="token punctuation">.</span><span class="token function">getExpiresAt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>expiresAt<span class="token punctuation">.</span><span class="token function">isBefore</span><span class="token punctuation">(</span>LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"token expired"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        confirmationTokenService<span class="token punctuation">.</span><span class="token function">setConfirmedAt</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUserService<span class="token punctuation">.</span><span class="token function">enableAppUser</span><span class="token punctuation">(</span>confirmationToken<span class="token punctuation">.</span><span class="token function">getAppUser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token string">"confirmed"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> String <span class="token function">buildEmail</span><span class="token punctuation">(</span>String name<span class="token punctuation">,</span> String link<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token string">"&lt;div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"\n"</span> <span class="token operator">+</span>
+                <span class="token string">"&lt;span style=\"display:none;font-size:1px;color:#fff;max-height:0\">&lt;/span>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"\n"</span> <span class="token operator">+</span>
+                <span class="token string">"  &lt;table role=\"presentation\" width=\"100%\" style=\"border-collapse:collapse;min-width:100%;width:100%!important\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;tbody>&lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td width=\"100%\" height=\"53\" bgcolor=\"#0b0c0c\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"        \n"</span> <span class="token operator">+</span>
+                <span class="token string">"        &lt;table role=\"presentation\" width=\"100%\" style=\"border-collapse:collapse;max-width:580px\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"          &lt;tbody>&lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"            &lt;td width=\"70\" bgcolor=\"#0b0c0c\" valign=\"middle\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                &lt;table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                  &lt;tbody>&lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                    &lt;td style=\"padding-left:10px\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                  \n"</span> <span class="token operator">+</span>
+                <span class="token string">"                    &lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                    &lt;td style=\"font-size:28px;line-height:1.315789474;Margin-top:4px;padding-left:10px\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                      &lt;span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">Confirm your email&lt;/span>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                    &lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                  &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                &lt;/tbody>&lt;/table>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"              &lt;/a>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"            &lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"          &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"        &lt;/tbody>&lt;/table>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"        \n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"  &lt;/tbody>&lt;/table>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"  &lt;table role=\"presentation\" class=\"m_-6186904992287805515content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;max-width:580px;width:100%!important\" width=\"100%\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;tbody>&lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td width=\"10\" height=\"10\" valign=\"middle\">&lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"        \n"</span> <span class="token operator">+</span>
+                <span class="token string">"                &lt;table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                  &lt;tbody>&lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                    &lt;td bgcolor=\"#1D70B8\" width=\"100%\" height=\"10\">&lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                  &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"                &lt;/tbody>&lt;/table>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"        \n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td width=\"10\" valign=\"middle\" height=\"10\">&lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"  &lt;/tbody>&lt;/table>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"\n"</span> <span class="token operator">+</span>
+                <span class="token string">"\n"</span> <span class="token operator">+</span>
+                <span class="token string">"\n"</span> <span class="token operator">+</span>
+                <span class="token string">"  &lt;table role=\"presentation\" class=\"m_-6186904992287805515content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;max-width:580px;width:100%!important\" width=\"100%\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;tbody>&lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td height=\"30\">&lt;br>&lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td width=\"10\" valign=\"middle\">&lt;br>&lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"        \n"</span> <span class="token operator">+</span>
+                <span class="token string">"            &lt;p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Hi "</span> <span class="token operator">+</span> name <span class="token operator">+</span> <span class="token string">",&lt;/p>&lt;p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> Thank you for registering. Please click on the below link to activate your account: &lt;/p>&lt;blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\">&lt;p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> &lt;a href=\""</span> <span class="token operator">+</span> link <span class="token operator">+</span> <span class="token string">"\">Activate Now&lt;/a> &lt;/p>&lt;/blockquote>\n Link will expire in 15 minutes. &lt;p>See you soon&lt;/p>"</span> <span class="token operator">+</span>
+                <span class="token string">"        \n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td width=\"10\" valign=\"middle\">&lt;br>&lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"      &lt;td height=\"30\">&lt;br>&lt;/td>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"    &lt;/tr>\n"</span> <span class="token operator">+</span>
+                <span class="token string">"  &lt;/tbody>&lt;/table>&lt;div class=\"yj6qo\">&lt;/div>&lt;div class=\"adL\">\n"</span> <span class="token operator">+</span>
+                <span class="token string">"\n"</span> <span class="token operator">+</span>
+                <span class="token string">"&lt;/div>&lt;/div>"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>这个buildEmail建议直接复制。</p>
+<h3 id="本地邮箱服务"><a href="#本地邮箱服务" class="headerlink" title="本地邮箱服务"></a>本地邮箱服务</h3><pre class=" language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g maildev
+dev</code></pre>
+<p>macOS可能需要加上sudo。</p>
+<p>修改application.yaml文件</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">error</span><span class="token punctuation">:</span>
+    <span class="token key atrule">include-message</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">include-binding-errors</span><span class="token punctuation">:</span> always
+
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>postgresql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>5432/registration
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> postgres
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> password
+  <span class="token key atrule">jpa</span><span class="token punctuation">:</span>
+    <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ddl-auto</span><span class="token punctuation">:</span> create<span class="token punctuation">-</span>drop
+    <span class="token key atrule">properties</span><span class="token punctuation">:</span>
+      <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
+        <span class="token key atrule">format_sql</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">show-sql</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">mail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">host</span><span class="token punctuation">:</span> localhost
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">1025</span>
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> hello
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> hello
+
+    <span class="token key atrule">properties</span><span class="token punctuation">:</span>
+      <span class="token key atrule">mail</span><span class="token punctuation">:</span>
+        <span class="token key atrule">smtp</span><span class="token punctuation">:</span>
+          <span class="token key atrule">ssl</span><span class="token punctuation">:</span>
+            <span class="token key atrule">trust</span><span class="token punctuation">:</span> <span class="token string">"*"</span>
+          <span class="token key atrule">auth</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">starttls</span><span class="token punctuation">:</span>
+            <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">connectiontimeout</span><span class="token punctuation">:</span> <span class="token number">5000</span>
+          <span class="token key atrule">timeout</span><span class="token punctuation">:</span> <span class="token number">3000</span>
+          <span class="token key atrule">writetimeout</span><span class="token punctuation">:</span> <span class="token number">5000</span></code></pre>
+<p>如果想要真实发送邮件，需要采用以下配置：</p>
+<pre class=" language-yaml"><code class="language-yaml"><span class="token key atrule">server</span><span class="token punctuation">:</span>
+  <span class="token key atrule">error</span><span class="token punctuation">:</span>
+    <span class="token key atrule">include-message</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">include-binding-errors</span><span class="token punctuation">:</span> always
+
+<span class="token key atrule">spring</span><span class="token punctuation">:</span>
+  <span class="token key atrule">datasource</span><span class="token punctuation">:</span>
+    <span class="token key atrule">url</span><span class="token punctuation">:</span> jdbc<span class="token punctuation">:</span>postgresql<span class="token punctuation">:</span>//localhost<span class="token punctuation">:</span>5432/registration
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> postgres
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> password
+  <span class="token key atrule">jpa</span><span class="token punctuation">:</span>
+    <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
+      <span class="token key atrule">ddl-auto</span><span class="token punctuation">:</span> create<span class="token punctuation">-</span>drop
+    <span class="token key atrule">properties</span><span class="token punctuation">:</span>
+      <span class="token key atrule">hibernate</span><span class="token punctuation">:</span>
+        <span class="token key atrule">format_sql</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+    <span class="token key atrule">show-sql</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+  <span class="token key atrule">mail</span><span class="token punctuation">:</span>
+    <span class="token key atrule">host</span><span class="token punctuation">:</span> smtp.163.com
+    <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">465</span>
+    <span class="token key atrule">username</span><span class="token punctuation">:</span> 
+    <span class="token key atrule">password</span><span class="token punctuation">:</span> 
+
+    <span class="token key atrule">properties</span><span class="token punctuation">:</span>
+      <span class="token key atrule">mail</span><span class="token punctuation">:</span>
+        <span class="token key atrule">smtp</span><span class="token punctuation">:</span>
+          <span class="token key atrule">ssl</span><span class="token punctuation">:</span>
+            <span class="token key atrule">enabled</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+            <span class="token key atrule">trust</span><span class="token punctuation">:</span> <span class="token string">"*"</span>
+          <span class="token key atrule">auth</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">starttls</span><span class="token punctuation">:</span>
+            <span class="token key atrule">enable</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+            <span class="token key atrule">required</span><span class="token punctuation">:</span> <span class="token boolean important">true</span>
+          <span class="token key atrule">connectiontimeout</span><span class="token punctuation">:</span> <span class="token number">5000</span>
+          <span class="token key atrule">timeout</span><span class="token punctuation">:</span> <span class="token number">3000</span>
+          <span class="token key atrule">writetimeout</span><span class="token punctuation">:</span> <span class="token number">5000</span>
+          <span class="token key atrule">socketFactory</span><span class="token punctuation">:</span>
+            <span class="token key atrule">port</span><span class="token punctuation">:</span> <span class="token number">465</span>
+            <span class="token key atrule">class</span><span class="token punctuation">:</span> javax.net.ssl.SSLSocketFactory
+    <span class="token key atrule">protocol</span><span class="token punctuation">:</span> smtp
+    <span class="token key atrule">default-encoding</span><span class="token punctuation">:</span> UTF<span class="token punctuation">-</span><span class="token number">8</span>
+
+
+</code></pre>
+<p>填入username和password即可。</p>
+<h2 id="最后的一点补充"><a href="#最后的一点补充" class="headerlink" title="最后的一点补充"></a>最后的一点补充</h2><p>AppUserRepository.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Repository</span>
+<span class="token annotation punctuation">@Transactional</span><span class="token punctuation">(</span>readOnly <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AppUserRepository</span> <span class="token keyword">extends</span> <span class="token class-name">JpaRepository</span><span class="token operator">&lt;</span>AppUser<span class="token punctuation">,</span>Long<span class="token operator">></span> <span class="token punctuation">{</span>
+    Optional<span class="token operator">&lt;</span>AppUser<span class="token operator">></span> <span class="token function">findByEmail</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Transactional</span>
+    <span class="token annotation punctuation">@Modifying</span>
+    <span class="token annotation punctuation">@Query</span><span class="token punctuation">(</span><span class="token string">"UPDATE AppUser a SET a.enabled = TRUE where a.email = ?1"</span><span class="token punctuation">)</span>
+    <span class="token keyword">int</span> <span class="token function">enableAppUser</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<p>AppUserService.java</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@Service</span>
+<span class="token annotation punctuation">@AllArgsConstructor</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AppUserService</span> <span class="token keyword">implements</span> <span class="token class-name">UserDetailsService</span> <span class="token punctuation">{</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token keyword">static</span> String USER_NOT_FOUND_MSG <span class="token operator">=</span> <span class="token string">"user with email %s not found"</span><span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> AppUserRepository appUserRepository<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> BCryptPasswordEncoder bCryptPasswordEncoder<span class="token punctuation">;</span>
+    <span class="token keyword">private</span> <span class="token keyword">final</span> ConfirmationTokenService confirmationTokenService<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> UserDetails <span class="token function">loadUserByUsername</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span> <span class="token keyword">throws</span> UsernameNotFoundException <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> appUserRepository<span class="token punctuation">.</span><span class="token function">findByEmail</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">orElseThrow</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token operator">></span><span class="token keyword">new</span> <span class="token class-name">UsernameNotFoundException</span><span class="token punctuation">(</span>String<span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>USER_NOT_FOUND_MSG<span class="token punctuation">,</span>email<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> String <span class="token function">singUpUser</span><span class="token punctuation">(</span>AppUser appUser<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">boolean</span> userExist <span class="token operator">=</span> appUserRepository<span class="token punctuation">.</span><span class="token function">findByEmail</span><span class="token punctuation">(</span>appUser<span class="token punctuation">.</span><span class="token function">getEmail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">isPresent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>userExist<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IllegalStateException</span><span class="token punctuation">(</span><span class="token string">"email already taken"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        String encodedPassword <span class="token operator">=</span> bCryptPasswordEncoder<span class="token punctuation">.</span><span class="token function">encode</span><span class="token punctuation">(</span>appUser<span class="token punctuation">.</span><span class="token function">getPassword</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUser<span class="token punctuation">.</span><span class="token function">setPassword</span><span class="token punctuation">(</span>encodedPassword<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        appUserRepository<span class="token punctuation">.</span><span class="token function">save</span><span class="token punctuation">(</span>appUser<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        String token <span class="token operator">=</span> UUID<span class="token punctuation">.</span><span class="token function">randomUUID</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        ConfirmationToken confirmationToken <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConfirmationToken</span><span class="token punctuation">(</span>
+                token<span class="token punctuation">,</span>
+                LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                LocalDateTime<span class="token punctuation">.</span><span class="token function">now</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">plusMinutes</span><span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                appUser
+        <span class="token punctuation">)</span><span class="token punctuation">;</span>
+        confirmationTokenService<span class="token punctuation">.</span><span class="token function">saveConfirmationToken</span><span class="token punctuation">(</span>confirmationToken<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//TODO: SEND EMAIL</span>
+        <span class="token keyword">return</span> token<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">enableAppUser</span><span class="token punctuation">(</span>String email<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> appUserRepository<span class="token punctuation">.</span><span class="token function">enableAppUser</span><span class="token punctuation">(</span>email<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>注意enableUser方法</p>
+</blockquote>
+<h2 id="在启动类上添加注解"><a href="#在启动类上添加注解" class="headerlink" title="在启动类上添加注解"></a>在启动类上添加注解</h2><p>很重要的一步，否则在发送邮件方法上添加的@Async方法将不生效。</p>
+<pre class=" language-java"><code class="language-java"><span class="token annotation punctuation">@SpringBootApplication</span>
+<span class="token annotation punctuation">@EnableAsync</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DemoApplication</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        SpringApplication<span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span>LoginDemoApplication<span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> args<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+
+        </div>
+
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+          <!-- 五星评分 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 23889});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<!-- <a target="_blank" rel="noopener" href="https://widgetpack.com" class="wpac-cr">Star Rating WIDGET PACK</a> -->
+          
+        </div>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/SpringBoot/" style="color: #716e77;">SpringBoot<em>·</em></a>
+              
+              <a href="/tags/SpringSecurity/" style="color: #716e77;">SpringSecurity<em>·</em></a>
+              
+              <a href="/tags/java/" style="color: #716e77;">java<em>·</em></a>
+              
+              <a href="/tags/%E7%8E%84%E5%AD%A6/" style="color: #716e77;">玄学<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/%E6%8A%80%E6%9C%AF/" style="color: #716e77;">技术</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <!-- <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/JavaScript/" style="font-size: 10px; color: #f06966">JavaScript</a> <a href="/tags/SpringBoot/" style="font-size: 10px; color: #f06966">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px; color: #f06966">SpringSecurity</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/css/" style="font-size: 10px; color: #f06966">css</a> <a href="/tags/git/" style="font-size: 10px; color: #f06966">git</a> <a href="/tags/java/" style="font-size: 10px; color: #f06966">java</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/python3/" style="font-size: 10px; color: #f06966">python3</a> <a href="/tags/rust/" style="font-size: 10px; color: #f06966">rust</a> <a href="/tags/vue/" style="font-size: 10px; color: #f06966">vue</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E6%95%B0%E5%80%BC/" style="font-size: 10px; color: #f06966">数值</a> <a href="/tags/%E7%8E%84%E5%AD%A6/" style="font-size: 10px; color: #f06966">玄学</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a> <a href="/tags/%E7%A0%81%E5%88%B6/" style="font-size: 10px; color: #f06966">码制</a> <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 10px; color: #f06966">表情包</a>
+          </div>
+        </div> -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/post/696.html" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg11.png"
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg11.png">
+              </div>
+              <span class="label">Previous Post</span>
+              <div class="info">
+                <h3>数制与补码</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/post/12437.html" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://test.png"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://test.png">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>normalize.css内容</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+      <section class="author-profile" >
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg" itemprop="image"
+              alt="orangepro" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a target="_blank" href="https://mini.buaihechengzizhi.com" itemprop="url" rel="author noopener">orangepro</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>开心才是第一生产力</p>
+      </section>
+      
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+<!--评论配置-->
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+
+      <!-- body.end -->
+    </div>
+    <!-- search -->    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- footer-->    
+    
+    <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="site-info">
+        <div class="footertext">
+          <div class="img-preload">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+          </div>
+        </div>
+        <!-- 网站数据统计 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #ff9999;padding-left: 20px;">
+                <!-- 网站运行时间统计 -->
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span id="time" align="center">载入时间中...</span>
+                <script>
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date("Tue Jan 19 2021 08:00:00 GMT+0800 (中国标准时间)");//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                      document.getElementById("time").innerHTML = "小破站在各种灾难中苟活了 "+ dnum +" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";      
+                  } 
+                  setInterval("createtime()",250);
+                </script>
+            </span> 
+          </p>
+        </div>
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #b9b9b9;padding-left: 20px;">
+              <!-- 全网站字数统计wordcount -->
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">14.9k</span>字</span>
+              <!-- 不蒜子网页计数器 -->
+              
+              
+            </span>
+          </p>
+        </div>
+        <!-- 作者注明 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+              <span style="color: #b9b9b9;">
+                Copyright &copy; 2021
+                &nbsp;&nbsp;<a style="color: #ff9999;display:inline-block"> 不爱喝橙子汁 </a>
+                &nbsp;&nbsp;<i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> 
+                <!-- &nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank" style="color: #ff9999;display:inline-block">Hexo</a> -->
+                <!-- |&nbsp;Theme&nbsp;<a href="https://gitee.com/cungudafa/hexo-theme-sakuraplus" target="_blank" style="color: #ff9999;display:inline-block">SakuraPlus</a> -->
+              </span>
+          </p>
+        </div>
+         <!-- 网站作者版权注明 -->
+         
+    </div><!-- .site-info -->
+</footer>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/sakura-app.js"></script>
+
+
+<!-- fancybox大图查看 需jq -->
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/jquery.fancybox.min.js"></script>
+  <script>
+    $('[data-fancybox="images"]').fancybox({
+      thumbs : {
+        autoStart : true //缩略图
+      }
+    });
+    $('[data-fancybox]').fancybox({
+      protect: true,//图片右键不能下载
+      youtube : {
+          controls : 0,
+          showinfo : 0
+      },
+      vimeo : {
+          color : 'f00'
+      }
+    });
+  </script>
+
+
+<!-- 自适应浏览器 -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {"pjax":"0","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  } else {
+    var Poi = {"pjax":"0","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  }
+  /* ]]> */
+  
+  </script>
+  <script>
+  $(document).ready(function() {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -400,
+            scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -85,
+            scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+  </script>
+    <!-- Side menu -->
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <!-- Floating window -->
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ornage-juice你不觉得阳光和橙子很配吗</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags">
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/artitalk/">
+                  <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                  说说
+                </a>
+              </li>
+            
+              <li>
+                <a href="/photos/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  相册
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakuraplus</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    enable="true"
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+>
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+
+   <!-- pages壁纸切换 -->
+ 
+    <div class="skin-menu no-select" id="mainskin"  style="position: fixed">
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+                <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+                <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+                <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+                <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+                <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+                <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+                <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+    </div>   
+    <canvas id="night-mode-cover"></canvas> 
+        <div class="changeSkin-gear no-select">
+        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL 
+            &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
+    </div><!-- skin.end -->
+
+  <!-- left side bar -->
+
+ </body>
+</html>

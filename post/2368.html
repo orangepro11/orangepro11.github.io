@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <!-- cungudafa百度收录验证编号 -->
+  <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">JavaScript中的深拷贝和浅拷贝 | 阳光下的橙子</title>
+  
+    <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css" type="text/css" media="all" id="saukra_css-css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css" media="all">  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/tags.css" media="all">
+  
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/fonts/LOGO/logo.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+
+  <!-- 分析 -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b05d6287bdeab72f3886bffe3cff054a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+  
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+  " type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+    * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+    * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+    */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "ornage-juice你不觉得阳光和橙子很配吗";
+    mashiro_option.author_name = "你不觉得阳光和橙子很配吗";
+    mashiro_option.site_url = "https://mini.buaihechengzizhi.com/";
+    mashiro_option.v_appId = "U5VwYYeYlmI7C8UuoWxHrDBz-MdYXbMMI";//
+    mashiro_option.v_appKey = "SFxC9o4DBWIBfhIBOTHlaXGf";//
+    mashiro_option.mathjax = "1";
+    mashiro_option.copyright_enable = "true" ;
+    mashiro_option.copyright_minCharNumber = parseInt("120") ;
+    mashiro_option.copyright_description = "本文章著作权归作者所有，任何形式的转载都请注明出处。" ;
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+    // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1370.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1461.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1462.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1463.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1464.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_0868.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg3.jpg".split(",");
+    var bgindex = Math.floor(Math.random()*bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="阳光下的橙子" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head> 
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- Dynamic sliders -->
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <!-- Main content -->
+  <section id="main-container">
+    <!-- Top menu -->
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com/">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>开心才是第一生产力</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  
+  <div id="video-container">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <!-- banner -->
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+        <span class="site-title">
+            <span class="logolink logo">
+                <a href="/">
+                    <ruby>
+                    <span class="sakuraso">橙子</span>
+                    <span class="no">の</span>
+                    <span class="shironeko">小屋</span>
+                    <rp></rp>
+                    <rt class="logo">ornage-juice</rt>
+                    <rp></rp>
+                    </ruby>
+                  </a>
+            </span>
+          </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags">
+                          <i class="fa fa-tags" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/artitalk/">
+                          <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                          说说
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/photos/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          相册
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      
+      <!-- body -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg7.jpg);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg7.jpg">
+  </div>
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">JavaScript中的深拷贝和浅拷贝</h1>
+    <p class="entry-census">
+      
+      <span class="post-meta-item">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </span>
+      
+      
+      <span class="post-meta-item">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com"> orangepro </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2021-1-23 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
+
+        
+        <!-- 阅读时长统计 -->
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-book"></i>
+    <span class="post-meta-item-text">字数统计: </span>
+    <!-- 安装插件npm install hexo-wordcount --save -->
+    <span class="post-count">1.1k字</span>
+  </span>
+</span>
+<span class="bull">
+·</span>
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+    <span class="post-meta-item-text">阅读时长≈</span>
+    <span class="post-count">4分钟</span>
+  </span>
+</span>
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/2368"> </span>
+              </span>
+          </span> -->
+    </p>
+  </header>
+</div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>首先希望你认真阅读这部分内容，这对你理解什么是浅拷贝和深拷贝非常的有帮助，不至于产生困惑。</p>
+<p>我们将通过JavaScript语法构建一个对象名为student，它有<code>name</code>和<code>score</code>两个属性，而score又会包含若干属性表示成绩，在之后的例子中他们将反复出现。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentA <span class="token operator">=</span> <span class="token punctuation">{</span>
+    name<span class="token punctuation">:</span><span class="token string">'A'</span><span class="token punctuation">,</span>
+    score<span class="token punctuation">:</span><span class="token punctuation">{</span>
+        Math<span class="token punctuation">:</span><span class="token number">43</span><span class="token punctuation">,</span>
+        English<span class="token punctuation">:</span><span class="token number">80</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<p>以上代码表示一个同学名为A，数学43分，英语80分，它将不再重复出现。</p>
+<p>现在请注意分析以下代码：</p>
+<h3 id="实例一"><a href="#实例一" class="headerlink" title="实例一"></a>实例一</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> studentA
+studentB<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'B'</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
+<p>以上代码的运行结果为</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'B'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<p>相信大家对这个结果是没有异议的，因为studentA和studentB实际上指向了一个内存地址，所以任何的更改必然同时影响A和B。现在的问题是：这个叫什么？</p>
+<blockquote>
+<p>回答“赋值”的人，恭喜你回答正确；对于回答“浅拷贝”的人，请继续往下看</p>
+</blockquote>
+<h3 id="实例二"><a href="#实例二" class="headerlink" title="实例二"></a>实例二</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span><span class="token punctuation">)</span>
+studentB<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'B'</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
+<p>以上代码的运行结果为</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<p>这个也很好理解，经过JSON序列化后他们显然不再有直接的关系了，那么，这个叫什么？</p>
+<blockquote>
+<p>没错，就是深拷贝，现在请继续往下看，</p>
+</blockquote>
+<h3 id="实例三"><a href="#实例三" class="headerlink" title="实例三"></a>实例三</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">assign</span><span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>studentA<span class="token punctuation">)</span>
+studentB<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'B'</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
+<p>以上代码的运行结果为</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">43</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<p>对于不熟悉Object.assign()方法的，请参考<a target="_blank" rel="noopener" href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/assign">这个链接</a>，现在要来问，这个叫什么？</p>
+<p>首先要恭喜回答浅拷贝的人回答正确，如果你的回答是深拷贝，请思考如下代码的运行结果</p>
+<pre class=" language-javascript"><code class="language-javascript">studentB<span class="token punctuation">.</span>score<span class="token punctuation">.</span>Math <span class="token operator">=</span> <span class="token number">98</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
+<p>运行结果是</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token punctuation">{</span> name<span class="token punctuation">:</span> <span class="token string">'A'</span><span class="token punctuation">,</span> score<span class="token punctuation">:</span> <span class="token punctuation">{</span> Math<span class="token punctuation">:</span> <span class="token number">98</span><span class="token punctuation">,</span> English<span class="token punctuation">:</span> <span class="token number">80</span> <span class="token punctuation">}</span> <span class="token punctuation">}</span></code></pre>
+<blockquote>
+<p>发现问题了吗？studentA里的name虽然没变，但是score却受了影响，换句话说，它可以复制一份值对象，但是对于引用对象却无能为力。这就叫<code>浅拷贝</code></p>
+</blockquote>
+<h2 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h2><p>前面我们分别讲述了赋值，深拷贝，浅拷贝这三种情况，这里我就不对深拷贝和浅拷贝下定义了，因为一定会把你们绕迷糊的，所以我们只讲述深浅拷贝的若干种方法的特性和优缺点。</p>
+<h3 id="使用ES6的扩展运算符实现浅拷贝"><a href="#使用ES6的扩展运算符实现浅拷贝" class="headerlink" title="使用ES6的扩展运算符实现浅拷贝"></a>使用ES6的扩展运算符实现浅拷贝</h3><p>这个方法实际上和object.assign()方法有异曲同工之妙，写起来更简单一些，但是我还是要说，它不能替代Object.assgin()，具体体现在对象的合并上，这里我就不展开叙述，不然就偏题了。</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">...</span>studentA<span class="token punctuation">}</span></code></pre>
+<h3 id="借助JSON的工具方法实现深拷贝"><a href="#借助JSON的工具方法实现深拷贝" class="headerlink" title="借助JSON的工具方法实现深拷贝"></a>借助JSON的工具方法实现深拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> studentB <span class="token operator">=</span> JSON<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p>以上方法可以满足大部分的深拷贝需求，但是请注意：<strong>此方法对undefined,RegExp,function等类型无效</strong>，如果你的对象中含有这些类型，请注意他们会被丢失。</p>
+<h3 id="使用Object-create-方法完成深拷贝"><a href="#使用Object-create-方法完成深拷贝" class="headerlink" title="使用Object.create()方法完成深拷贝"></a>使用Object.create()方法完成深拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">var</span> copy <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>Object<span class="token punctuation">.</span><span class="token function">getPrototypeOf</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">var</span> propNames <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyNames</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  propNames<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">var</span> desc <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">getOwnPropertyDescriptor</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Object<span class="token punctuation">.</span><span class="token function">defineProperty</span><span class="token punctuation">(</span>copy<span class="token punctuation">,</span> name<span class="token punctuation">,</span> desc<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">return</span> copy<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> studentB <span class="token operator">=</span> <span class="token function">deepCopy</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span></code></pre>
+<h3 id="使用递归算法完成深拷贝-无坑版"><a href="#使用递归算法完成深拷贝-无坑版" class="headerlink" title="使用递归算法完成深拷贝(无坑版)"></a>使用递归算法完成深拷贝(无坑版)</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">isPrimitive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token punctuation">(</span><span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'string'</span> <span class="token operator">||</span> 
+  <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'number'</span> <span class="token operator">||</span> 
+  <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'symbol'</span> <span class="token operator">||</span>
+  <span class="token keyword">typeof</span> value <span class="token operator">===</span> <span class="token string">'boolean'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 判断是否是一个js对象
+ * @param value 
+ */</span>
+<span class="token keyword">function</span> <span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+  <span class="token keyword">return</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>toString<span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">"[object Object]"</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment" spellcheck="true">/**
+ * 深拷贝一个值
+ * @param value 
+ */</span>
+<span class="token keyword">function</span> <span class="token function">cloneDeep</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+
+  <span class="token comment" spellcheck="true">// 记录被拷贝的值，避免循环引用的出现</span>
+  <span class="token keyword">let</span> memo <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">function</span> <span class="token function">baseClone</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token keyword">let</span> res<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 如果是基本数据类型，则直接返回</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isPrimitive</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      <span class="token keyword">return</span> value<span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">// 如果是引用数据类型，我们浅拷贝一个新值来代替原来的值</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>Array<span class="token punctuation">.</span><span class="token function">isArray</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span>value<span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">isObject</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+      res <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token operator">...</span>value<span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment" spellcheck="true">// 检测我们浅拷贝的这个对象的属性值有没有是引用数据类型。如果是，则递归拷贝</span>
+    Reflect<span class="token punctuation">.</span><span class="token function">ownKeys</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token operator">></span><span class="token punctuation">{</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">===</span> <span class="token string">"object"</span> <span class="token operator">&amp;&amp;</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token operator">!==</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//此处我们用memo来记录已经被拷贝过的引用地址。以此来解决循环引用的问题</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>memo<span class="token punctuation">[</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+          res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> memo<span class="token punctuation">[</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+          memo<span class="token punctuation">[</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">]</span> <span class="token operator">=</span> res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">;</span>
+          res<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">baseClone</span><span class="token punctuation">(</span>res<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>  
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token function">baseClone</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">let</span> studentB <span class="token operator">=</span> <span class="token function">cloneDeep</span><span class="token punctuation">(</span>A<span class="token punctuation">)</span></code></pre>
+<h3 id="使用ES插件lodash完成深拷贝"><a href="#使用ES插件lodash完成深拷贝" class="headerlink" title="使用ES插件lodash完成深拷贝"></a>使用ES插件lodash完成深拷贝</h3><pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">import</span> lodash <span class="token keyword">from</span> <span class="token string">'lodash'</span>
+
+<span class="token keyword">let</span> studentB <span class="token operator">=</span> lodash<span class="token punctuation">.</span><span class="token function">cloneDeep</span><span class="token punctuation">(</span>studentA<span class="token punctuation">)</span></code></pre>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>实现深拷贝最简洁的方法是借助JSON的工具方法，使用插件lodash和手写递归算法是适用于实际开发的方法，还请大家根据实际情况自行斟酌。</p>
+
+        </div>
+
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+          <!-- 五星评分 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 23889});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<!-- <a target="_blank" rel="noopener" href="https://widgetpack.com" class="wpac-cr">Star Rating WIDGET PACK</a> -->
+          
+        </div>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/JavaScript/" style="color: #716e77;">JavaScript<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/%E6%8A%80%E6%9C%AF/" style="color: #716e77;">技术</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <!-- <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/JavaScript/" style="font-size: 10px; color: #f06966">JavaScript</a> <a href="/tags/SpringBoot/" style="font-size: 10px; color: #f06966">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px; color: #f06966">SpringSecurity</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/css/" style="font-size: 10px; color: #f06966">css</a> <a href="/tags/git/" style="font-size: 10px; color: #f06966">git</a> <a href="/tags/java/" style="font-size: 10px; color: #f06966">java</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/python3/" style="font-size: 10px; color: #f06966">python3</a> <a href="/tags/rust/" style="font-size: 10px; color: #f06966">rust</a> <a href="/tags/vue/" style="font-size: 10px; color: #f06966">vue</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E6%95%B0%E5%80%BC/" style="font-size: 10px; color: #f06966">数值</a> <a href="/tags/%E7%8E%84%E5%AD%A6/" style="font-size: 10px; color: #f06966">玄学</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a> <a href="/tags/%E7%A0%81%E5%88%B6/" style="font-size: 10px; color: #f06966">码制</a> <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 10px; color: #f06966">表情包</a>
+          </div>
+        </div> -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/post/38561.html" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg8.png"
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg8.png">
+              </div>
+              <span class="label">Previous Post</span>
+              <div class="info">
+                <h3>python3.9新特性</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/post/36801.html" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg6.jpg"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg6.jpg">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>在服务器上搭建git仓库</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+      <section class="author-profile" >
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg" itemprop="image"
+              alt="orangepro" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a target="_blank" href="https://mini.buaihechengzizhi.com" itemprop="url" rel="author noopener">orangepro</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>开心才是第一生产力</p>
+      </section>
+      
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+<!--评论配置-->
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+
+      <!-- body.end -->
+    </div>
+    <!-- search -->    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- footer-->    
+    
+    <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="site-info">
+        <div class="footertext">
+          <div class="img-preload">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+          </div>
+        </div>
+        <!-- 网站数据统计 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #ff9999;padding-left: 20px;">
+                <!-- 网站运行时间统计 -->
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span id="time" align="center">载入时间中...</span>
+                <script>
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date("Tue Jan 19 2021 08:00:00 GMT+0800 (中国标准时间)");//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                      document.getElementById("time").innerHTML = "小破站在各种灾难中苟活了 "+ dnum +" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";      
+                  } 
+                  setInterval("createtime()",250);
+                </script>
+            </span> 
+          </p>
+        </div>
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #b9b9b9;padding-left: 20px;">
+              <!-- 全网站字数统计wordcount -->
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">14.9k</span>字</span>
+              <!-- 不蒜子网页计数器 -->
+              
+              
+            </span>
+          </p>
+        </div>
+        <!-- 作者注明 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+              <span style="color: #b9b9b9;">
+                Copyright &copy; 2021
+                &nbsp;&nbsp;<a style="color: #ff9999;display:inline-block"> 不爱喝橙子汁 </a>
+                &nbsp;&nbsp;<i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> 
+                <!-- &nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank" style="color: #ff9999;display:inline-block">Hexo</a> -->
+                <!-- |&nbsp;Theme&nbsp;<a href="https://gitee.com/cungudafa/hexo-theme-sakuraplus" target="_blank" style="color: #ff9999;display:inline-block">SakuraPlus</a> -->
+              </span>
+          </p>
+        </div>
+         <!-- 网站作者版权注明 -->
+         
+    </div><!-- .site-info -->
+</footer>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/sakura-app.js"></script>
+
+
+<!-- fancybox大图查看 需jq -->
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/jquery.fancybox.min.js"></script>
+  <script>
+    $('[data-fancybox="images"]').fancybox({
+      thumbs : {
+        autoStart : true //缩略图
+      }
+    });
+    $('[data-fancybox]').fancybox({
+      protect: true,//图片右键不能下载
+      youtube : {
+          controls : 0,
+          showinfo : 0
+      },
+      vimeo : {
+          color : 'f00'
+      }
+    });
+  </script>
+
+
+<!-- 自适应浏览器 -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {"pjax":"0","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  } else {
+    var Poi = {"pjax":"0","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  }
+  /* ]]> */
+  
+  </script>
+  <script>
+  $(document).ready(function() {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -400,
+            scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -85,
+            scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+  </script>
+    <!-- Side menu -->
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <!-- Floating window -->
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ornage-juice你不觉得阳光和橙子很配吗</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags">
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/artitalk/">
+                  <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                  说说
+                </a>
+              </li>
+            
+              <li>
+                <a href="/photos/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  相册
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakuraplus</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    enable="true"
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+>
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+
+   <!-- pages壁纸切换 -->
+ 
+    <div class="skin-menu no-select" id="mainskin"  style="position: fixed">
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+                <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+                <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+                <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+                <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+                <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+                <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+                <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+    </div>   
+    <canvas id="night-mode-cover"></canvas> 
+        <div class="changeSkin-gear no-select">
+        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL 
+            &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
+    </div><!-- skin.end -->
+
+  <!-- left side bar -->
+
+ </body>
+</html>

@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <!-- cungudafa百度收录验证编号 -->
+  <!-- <meta name="baidu-site-verification" content="LukfTcyXmC" /> -->
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+  <title itemprop="name">数制与补码 | 阳光下的橙子</title>
+  
+    <link rel="shortcut icon" href="/images/bitbug_favicon.ico">
+  
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+SerifMerriweather|Merriweather+Sans|Source+Code+Pro|Ubuntu:400,700|Noto+Serif+SC" media="all">
+  <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/style.css" type="text/css" media="all" id="saukra_css-css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/jquery.fancybox.min.css" media="all">  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/lib.min.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/font.css" media="all">
+  <link rel="stylesheet" href="/css/insight.css" media="all">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/tags.css" media="all">
+  
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/logo.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/fonts/LOGO/logo.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+
+  <!-- 分析 -->
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+  <!-- Baidu Analytics -->
+
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?b05d6287bdeab72f3886bffe3cff054a";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+
+  
+  <!--   <link rel="stylesheet" id="saukra_css-css" href="https://2heng.xin/wp-content/cache/autoptimize/css/autoptimize_ad42a61f4c7d4bdd9f91afcff6b5dda5.css
+  " type="text/css" media="all"> -->
+  <script>
+    /*Initial Variables*/
+    var mashiro_option = new Object();
+    var mashiro_global = new Object();
+    mashiro_option.NProgressON = true;
+    /* 
+    * 邮箱信息之类的东西可以填在这里，这些js变量基本都作用于sakura-app.js
+    * 这样的设置仅是为了方便在基于PHP开发的主题中设置js变量，既然移植到了Node上，我想或许可以精简这一逻辑吧
+    */
+    mashiro_option.email_domain = "";
+    mashiro_option.email_name = "";
+    mashiro_option.cookie_version_control = "";
+    mashiro_option.qzone_autocomplete = false;
+    mashiro_option.site_name = "ornage-juice你不觉得阳光和橙子很配吗";
+    mashiro_option.author_name = "你不觉得阳光和橙子很配吗";
+    mashiro_option.site_url = "https://mini.buaihechengzizhi.com/";
+    mashiro_option.v_appId = "U5VwYYeYlmI7C8UuoWxHrDBz-MdYXbMMI";//
+    mashiro_option.v_appKey = "SFxC9o4DBWIBfhIBOTHlaXGf";//
+    mashiro_option.mathjax = "1";
+    mashiro_option.copyright_enable = "true" ;
+    mashiro_option.copyright_minCharNumber = parseInt("120") ;
+    mashiro_option.copyright_description = "本文章著作权归作者所有，任何形式的转载都请注明出处。" ;
+    mashiro_option.qq_api_url = "https://api.mashiro.top/qqinfo/"; 
+    mashiro_option.qq_avatar_api_url = "https://api.mashiro.top/qqinfo/";
+
+    // mashiro_option.jsdelivr_css_src = "https://cdn.jsdelivr.net/gh/moezx/cdn@3.4.5/css/lib.min.css";
+    // mashiro_option.float_player_on = true;
+
+    /*End of Initial Variables*/
+  </script>
+  <script type="text/javascript">
+    var bg = "https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1370.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1461.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1462.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1463.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_1464.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/IMG_0868.JPG,https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg3.jpg".split(",");
+    var bgindex = Math.floor(Math.random()*bg.length);
+    if (!!window.ActiveXObject || "ActiveXObject" in window) { //is IE?
+      alert('朋友，IE浏览器未适配哦~');
+    }
+  </script>
+<meta name="generator" content="Hexo 5.3.0"><link rel="alternate" href="/atom.xml" title="阳光下的橙子" type="application/atom+xml">
+
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head> 
+
+<body class="page-template page-template-user page-template-page-analytics page-template-userpage-analytics-php page page-id-1297 chinese-font serif isWebKit">
+  <!-- Dynamic sliders -->
+  <div class="scrollbar" id="bar">
+  </div>
+  <a href="#" class="cd-top faa-float animated"></a>
+  <!-- Main content -->
+  <section id="main-container">
+    <!-- Top menu -->
+    <div class="headertop filter-dot">
+  <div id="banner_wave_1"></div>
+  <div id="banner_wave_2"></div>
+  <figure id="centerbg" class="centerbg">
+    <div class="focusinfo no-select">
+      <div class="header-tou">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com/">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </div>
+      <div class="header-info">
+        <p>开心才是第一生产力</p>
+        <div class="top-social_v2">
+          <li id="bg-pre">
+            <img class="flipx" src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+          
+          <li id="bg-next">
+            <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/next-b.svg">
+          </li>
+        </div>
+      </div>
+    </div>
+  </figure>
+  
+  <div id="video-container">
+    <video style="object-fit: fill" id="bgvideo" class="video" video-name="" src="" width="auto" preload="auto">
+    </video>
+    <div id="video-btn" class="loadvideo videolive">
+    </div>
+    <div id="video-add">
+    </div>
+    <div class="video-stu">
+    </div>
+  </div>
+  <div class="headertop-down faa-float animated" onclick="headertop_down()">
+    <span>
+      <i class="fa fa-chevron-down" aria-hidden="true">
+      </i>
+    </span>
+  </div>
+</div>
+    <div id="page" class="site wrapper">
+      <!-- banner -->
+      <header class="site-header no-select gizle sabit" role="banner">
+  <div class="site-top">
+    <div class="site-branding">
+        <span class="site-title">
+            <span class="logolink logo">
+                <a href="/">
+                    <ruby>
+                    <span class="sakuraso">橙子</span>
+                    <span class="no">の</span>
+                    <span class="shironeko">小屋</span>
+                    <rp></rp>
+                    <rt class="logo">ornage-juice</rt>
+                    <rp></rp>
+                    </ruby>
+                  </a>
+            </span>
+          </span>
+    </div>
+    <div class="searchbox search-form-submit">
+      <i class="iconfont js-toggle-search iconsearch icon-search">
+      </i>
+    </div>
+    <div id="show-nav" class="showNav mobile-fit">
+      <div class="line line1">
+      </div>
+      <div class="line line2">
+      </div>
+      <div class="line line3">
+      </div>
+    </div>
+    <div class="lower-cantiner">
+      <div class="lower">
+        <nav class="mobile-fit-control hide">
+          <ul id="menu-new" class="menu">
+            
+              <li>
+                <a href="/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+                    首页
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/archives">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+                    归档
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/tags">
+                          <i class="fa fa-tags" aria-hidden="true"></i>
+                          标签
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                          <i class="fa fa-code" aria-hidden="true"></i>
+                          技术
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                          <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                          生活
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="javascript:;">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+                    清单
+                  </span>
+                </a>
+                
+                  <ul class="sub-menu">
+                    
+                      <li>
+                        <a href="/artitalk/">
+                          <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                          说说
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/photos/">
+                          <i class="fa fa-photo" aria-hidden="true"></i>
+                          相册
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/books/">
+                          <i class="fa fa-book" aria-hidden="true"></i>
+                          悦读
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a href="/movies/">
+                          <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                          追剧
+                        </a>
+                      </li>
+                    
+                  </ul>
+                
+              </li>
+            
+              <li>
+                <a href="/links/">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+                    友人帐
+                  </span>
+                </a>
+                
+              </li>
+            
+              <li>
+                <a href="/atom.xml">
+                  <span class="faa-parent animated-hover">
+                    <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+                    RSS
+                  </span>
+                </a>
+                
+              </li>
+            
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </div>
+</header>
+
+      
+      <!-- body -->
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/cungudafa/cdn/css/sharejs.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.4.2/tocbot.css">
+<div class="pattern-center-blank"></div>
+
+<div class="pattern-center single-center">
+  <!-- 有配图默认渲染第一张 -->
+  <div class="pattern-attachment-img lazyload" style="background-image: url(https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg11.png);"
+    src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg11.png">
+  </div>
+  <header class="pattern-header single-header">
+    <h1 class="entry-title">数制与补码</h1>
+    <p class="entry-census">
+      
+      <span class="post-meta-item">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com">
+          <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+        </a>
+      </span>
+      
+      
+      <span class="post-meta-item">
+        <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com"> orangepro </a>
+      </span>
+      <span class="bull">
+        ·</span>
+      
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="fa fa-calendar"></i>
+        </span>
+        <span class="post-meta-item-text"> 2021-5-12 </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 浏览数显示 -->
+      <span class="post-meta-item" >
+        <span class="post-meta-item-icon">
+          <i class="iconfont icon-attention"></i>
+        </span>
+        <span class="post-meta-item-text">本文共<span id="busuanzi_value_page_pv"> </span>次阅读
+        </span>
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 字数统计-->
+      <span class="post-meta-item" >
+
+        
+        <!-- 阅读时长统计 -->
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-book"></i>
+    <span class="post-meta-item-text">字数统计: </span>
+    <!-- 安装插件npm install hexo-wordcount --save -->
+    <span class="post-count">1.1k字</span>
+  </span>
+</span>
+<span class="bull">
+·</span>
+<span class="post-time">
+  <span class="post-meta-item-icon">
+    <i class="fa fa-coffee"></i>
+    <span class="post-meta-item-text">阅读时长≈</span>
+    <span class="post-count">3分钟</span>
+  </span>
+</span>
+        
+      </span>
+      <span class="bull">
+        ·</span>
+      <!-- 评论数显示 -->
+      <!-- <span class="post-meta-item" >
+              <span class="post-meta-item-icon">
+                <i class="fa fa-comment-o"></i>
+              </span>
+              </span class="post-meta-item-text">
+                <span class="valine-comment-count" data-xid="/696"> </span>
+              </span>
+          </span> -->
+    </p>
+  </header>
+</div>
+
+<div id="content" class="site-content">
+  <div id="primary" class="content-area">
+    <main id="main" class="site-main" role="main">
+      <article id="post-1"
+        class="post-1 post type-post status-publish format-standard has-post-thumbnail hentry category-uncategorized">
+        <div class="toc"></div>
+        <!--<div class="toc-entry-content">  -->
+        <!--套嵌目录使用（主要为了支援评论）-->
+        
+        <div class="entry-content">
+          <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>写这篇文章一方面给人解惑另一方面使防止自己以后抽风（因为近期已经抽风过一次）。</p>
+<h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="二转十"><a href="#二转十" class="headerlink" title="二转十"></a>二转十</h2><p>简明的8421法，从右往左数每一位乘1，2，4，8，16，32….然后加起来，这个就叫加权法。比如0101就是5。</p>
+<h2 id="十转二"><a href="#十转二" class="headerlink" title="十转二"></a>十转二</h2><p>短除法，小学二年级知识。</p>
+<h2 id="二转八"><a href="#二转八" class="headerlink" title="二转八"></a>二转八</h2><p>每三位当成一个十进制数看，不足就往前补0，一定记得是从右往左看，然后照抄在对应位置就行。比如101 001就是51（八进制的51）。</p>
+<h2 id="二转十六"><a href="#二转十六" class="headerlink" title="二转十六"></a>二转十六</h2><p>每四位当成一个十进制数照抄。</p>
+<h1 id="正负号"><a href="#正负号" class="headerlink" title="正负号"></a>正负号</h1><p>十进制区分正负数用+号和-号表示，非常简单明了，那二进制也这么来不就行了？那不行，计算机只能读取01序列是不言自明的真理。</p>
+<p>那就是说至少得需要用一个二进制位去表示是正是负，所以就在数字最前规定一个符号位，当它为0的时候表示是正数，为1的时候就表示是负数，起到和+和-相同的效果。</p>
+<h1 id="引发的问题"><a href="#引发的问题" class="headerlink" title="引发的问题"></a>引发的问题</h1><p>到目前为止一切都非常完美，不仅能自如的转换十进制和二进制，还能解决正负号的问题，这实数的所有问题不就都解决了吗？并没有，你还得解决运算问题。</p>
+<p>按照前面的理论，+5的二进制数为：0 0101 ； -5的二进制数就是：1 0101对吧，现在我们知道一个显而易见的事实：+5 + ( -5 ) = 0，但是我们的0 0101 + 1 0101可不等于0啊，也就是说这种方法并不能解决运算问题，相加得0明显是不言自明的真理，但仅仅因为数制不同就连这个问题都解决不了了？</p>
+<h1 id="问题的关键"><a href="#问题的关键" class="headerlink" title="问题的关键"></a>问题的关键</h1><p>关键在于我们的这套编码方式同时具有“权重”和“词法语义”两层含义，是混合编码，比如0101是权重分配的序列，它和十进制的5是双射的，但是前面的0或者1其实是语义，是人为赋予它的“正负号”，这东西直接参与运算当然会有问题，所以我们必须解决这个混合编码的问题才行。</p>
+<h1 id="权重分配"><a href="#权重分配" class="headerlink" title="权重分配"></a>权重分配</h1><p><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/%E6%9D%83%E9%87%8D.png" alt="image-20210512224326112"></p>
+<p>我们给第一个符号位分配一个权重为 -2的N-1次，其他都是正的权重，这当然是有道理的，如果这一位是0，那么自然这个权重也就没有用了，如果这个数字是1，分配这么大的负权重，后面无论怎么加都逃脱不了它是个负数的命运，所以也没有破坏它的语义，非常的完美，我们把这么分配权重的二进制数称为补码。</p>
+<h1 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h1><p>现在我们来看这个权重分配能不能解决问题，+5的补码是0 0101 ，-5的补码是 1 1011，0 0101 + 1 1011是1 00000，啊这不不是0吗，但是总共才五位数啊，所以第一位的1就很正好的被舍弃了，哎，就正好是0了，现在你们是不是已经知道补码的工作方式了。</p>
+<h1 id="还有一些事"><a href="#还有一些事" class="headerlink" title="还有一些事"></a>还有一些事</h1><p>还是以五位二进制数为例，如果用补码表示，最大的正数就是0 1111，就是15；最小的负数就是1 0000，就是-16；那看起来负数比正数多一个数这不对称啊？</p>
+<p>那想到这个说明有动脑思考，但你不觉得缺点什么吗，中间不是还有一个0没算吗，那0是正数还是负数呢？显然我们把数分为正负本是也是不合理的，应该分为负数 和 非负数，这样16个负数16个非负数，正好32个数，完美的闭环。</p>
+<p>所以这又暴露了原先混合编码的时候出现的问题：混合编码会搞出来正0和负0两种东西。</p>
+<h1 id="补码的计算"><a href="#补码的计算" class="headerlink" title="补码的计算"></a>补码的计算</h1><p>以上只是原理，用这种加权法计算补码会很麻烦，所以有一套简明的计算公式：</p>
+<ol>
+<li>先写出原码</li>
+<li>然后再写补码，如果是正数就照抄；如果是负数，符号位置1，其他全部0换1 1换0，然后整个数字再+1，冒了就舍弃</li>
+</ol>
+
+        </div>
+
+        <!-- .entry-content -->
+        <div class="single-reward">
+          <div class="reward-open">赏
+            <div class="reward-main">
+              <ul class="reward-row">
+                <li class="alipay-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+                <li class="wechat-code"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdnnull"></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div style="text-align:center; width: 100%" class="social-share share-mobile" data-disabled="diandian, tencent">
+        </div>
+        <!-- 评分 -->
+        <div class="single-reward">
+          
+          <!-- 五星评分 -->
+<div id="wpac-rating"></div>
+<script type="text/javascript">
+wpac_init = window.wpac_init || [];
+wpac_init.push({widget: 'Rating', id: 23889});
+(function() {
+    if ('WIDGETPACK_LOADED' in window) return;
+    WIDGETPACK_LOADED = true;
+    var mc = document.createElement('script');
+    mc.type = 'text/javascript';
+    mc.async = true;
+    mc.src = 'https://embed.widgetpack.com/widget.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(mc, s.nextSibling);
+})();
+</script>
+<!-- <a target="_blank" rel="noopener" href="https://widgetpack.com" class="wpac-cr">Star Rating WIDGET PACK</a> -->
+          
+        </div>
+        <!-- 自定义署名方式 -->
+        <footer class="post-footer">
+          <div class="post-lincenses" style="color: #ff9966;">
+            欢迎转载，转载时请注明来源哦！
+            <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" style="color: #ff9966;" target="_blank"
+              rel="nofollow">
+              <i class="fa fa-creative-commons" aria-hidden="true"></i>ncsa4.0</a>
+          </div>
+          
+          <div class="post-tags" style="color: #a39391">
+            <span><i class="fa fa-tags"></i>
+              
+              <a href="/tags/%E6%95%B0%E5%80%BC/" style="color: #716e77;">数值<em>·</em></a>
+              
+              <a href="/tags/%E7%A0%81%E5%88%B6/" style="color: #716e77;">码制<em>·</em></a>
+              
+            </span>
+            <span>
+              <i class="iconfont icon-file"></i>
+              
+              <a href="/categories/%E6%8A%80%E6%9C%AF/" style="color: #716e77;">技术</a>
+              
+            </span>
+          </div>
+          
+          <div class="post-share" >
+            <div class="social-share sharehidden share-component"></div>
+            <i class="iconfont show-share icon-forward"></i>
+          </div>
+        </footer><!-- .entry-footer -->
+        <!-- <div class="tag-cloud">
+          <div class="tag-cloud-title">
+          </div>
+          <div class="tag-cloud-tags">
+            <a href="/tags/CDN/" style="font-size: 10px; color: #f06966">CDN</a> <a href="/tags/JavaScript/" style="font-size: 10px; color: #f06966">JavaScript</a> <a href="/tags/SpringBoot/" style="font-size: 10px; color: #f06966">SpringBoot</a> <a href="/tags/SpringSecurity/" style="font-size: 10px; color: #f06966">SpringSecurity</a> <a href="/tags/apple-m1/" style="font-size: 10px; color: #f06966">apple m1</a> <a href="/tags/css/" style="font-size: 10px; color: #f06966">css</a> <a href="/tags/git/" style="font-size: 10px; color: #f06966">git</a> <a href="/tags/java/" style="font-size: 10px; color: #f06966">java</a> <a href="/tags/preview/" style="font-size: 10px; color: #f06966">preview</a> <a href="/tags/python3/" style="font-size: 10px; color: #f06966">python3</a> <a href="/tags/rust/" style="font-size: 10px; color: #f06966">rust</a> <a href="/tags/vue/" style="font-size: 10px; color: #f06966">vue</a> <a href="/tags/%E5%A3%81%E7%BA%B8/" style="font-size: 10px; color: #f06966">壁纸</a> <a href="/tags/%E6%95%B0%E5%80%BC/" style="font-size: 10px; color: #f06966">数值</a> <a href="/tags/%E7%8E%84%E5%AD%A6/" style="font-size: 10px; color: #f06966">玄学</a> <a href="/tags/%E7%99%BD%E5%AB%96/" style="font-size: 10px; color: #f06966">白嫖</a> <a href="/tags/%E7%A0%81%E5%88%B6/" style="font-size: 10px; color: #f06966">码制</a> <a href="/tags/%E8%A1%A8%E6%83%85%E5%8C%85/" style="font-size: 10px; color: #f06966">表情包</a>
+          </div>
+        </div> -->
+      </article>
+      <!-- #post-## -->
+      <div class="toc" style="background: none;"></div>
+      <section class="post-squares nextprev">
+        
+        
+        <div class="post-nepre half previous">
+          
+            <a href="/post/4227.html" rel="prev">
+              <div class="background">
+                <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://test.png"
+                  style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;" onerror="imgError(this,3)"
+                  src="https://test.png">
+              </div>
+              <span class="label">Previous Post</span>
+              <div class="info">
+                <h3>RxJS速记</h3>
+                <hr>
+              </div>
+            </a>
+          </div>
+          
+          
+          
+          <div class="post-nepre half next">
+            
+              <a href="/post/60573.html" rel="next">
+                <div class="background">
+                  <img class="lazyload" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/img/loader/orange.progress-bar-stripe-loader.svg" data-src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg10.jpg"
+                    style="width: 100%; height: 100%; object-fit: cover; pointer-events: none;"
+                    onerror="imgError(this,3)" src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/壁纸/bg10.jpg">
+                </div>
+                <span class="label">Next Post</span>
+                <div class="info">
+                  <h3>SpringBoot实现用户注册登录+邮箱验证</h3>
+                  <hr>
+                </div>
+              </a>
+            </div>
+            
+      </section>
+      <!-- 加密文章隐藏评论 -->
+      <section class="comment" >
+        <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+      </section>
+      <!-- 加密文章隐藏作者信息 -->
+      
+      <section class="author-profile" >
+        <div class="info" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+          <a target="_blank" rel="noopener" href="https://mini.buaihechengzizhi.com" class="profile gravatar"><img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg" itemprop="image"
+              alt="orangepro" height="70" width="70"></a>
+          <div class="meta">
+            <span class="title">Author</span>
+            <h3 itemprop="name">
+              <a target="_blank" href="https://mini.buaihechengzizhi.com" itemprop="url" rel="author noopener">orangepro</a>
+            </h3>
+          </div>
+        </div>
+        <hr>
+        <p><i class="iconfont icon-write"></i>开心才是第一生产力</p>
+      </section>
+      
+    </main><!-- #main -->
+  </div><!-- #primary -->
+</div>
+
+
+<!--评论配置-->
+
+
+
+  <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<div id="gitalk-container" class="comment"></div> 
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script src="/js/md5.min.js"></script>
+<script type="text/javascript">
+	var gitalk = new Gitalk({
+  	clientID: '2fb7582fdf9227e80ccb',
+  	clientSecret: '40b42c9c39229bdabdc8f689172f423f4136fa6c',
+  	repo: 'orangepro11.github.io',
+  	owner: 'orangepro11',
+	admin: ['orangepro11'],
+	distractionFreeMode: 'true',
+    id: md5(location.pathname)
+})
+gitalk.render('gitalk-container') 
+</script>
+
+
+      <!-- body.end -->
+    </div>
+    <!-- search -->    
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..."/>
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            // PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+    <!-- footer-->    
+    
+    <footer id="colophon" class="site-footer" role="contentinfo">
+    <div class="site-info">
+        <div class="footertext">
+          <div class="img-preload">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/wordpress-rotating-ball-o.svg">
+              <img src="https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/other/disqus-preloader.svg">
+          </div>
+        </div>
+        <!-- 网站数据统计 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #ff9999;padding-left: 20px;">
+                <!-- 网站运行时间统计 -->
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span id="time" align="center">载入时间中...</span>
+                <script>
+                var now = new Date(); 
+                function createtime() { 
+                      var grt= new Date("Tue Jan 19 2021 08:00:00 GMT+0800 (中国标准时间)");//在此处修改你的建站时间
+                      now.setTime(now.getTime()+250); 
+                      days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+                      hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+                      if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+                      mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+                      seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+                      snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+                      document.getElementById("time").innerHTML = "小破站在各种灾难中苟活了 "+ dnum +" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";      
+                  } 
+                  setInterval("createtime()",250);
+                </script>
+            </span> 
+          </p>
+        </div>
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+            <span style="color: #b9b9b9;padding-left: 20px;">
+              <!-- 全网站字数统计wordcount -->
+              <i class="fa fa-line-chart"  aria-hidden="true" style="color: #ff9999;display:inline-block"></i> 博客全站共: <span class="post-count" style="color:#ff9999;">14.9k</span>字</span>
+              <!-- 不蒜子网页计数器 -->
+              
+              
+            </span>
+          </p>
+        </div>
+        <!-- 作者注明 -->
+        <div class="footer-device">
+          <p style="font-family: 'Ubuntu', sans-serif;">
+              <span style="color: #b9b9b9;">
+                Copyright &copy; 2021
+                &nbsp;&nbsp;<a style="color: #ff9999;display:inline-block"> 不爱喝橙子汁 </a>
+                &nbsp;&nbsp;<i class="iconfont icon-sakura rotating" style="color: #ffc0cb;display:inline-block"></i> 
+                <!-- &nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank" style="color: #ff9999;display:inline-block">Hexo</a> -->
+                <!-- |&nbsp;Theme&nbsp;<a href="https://gitee.com/cungudafa/hexo-theme-sakuraplus" target="_blank" style="color: #ff9999;display:inline-block">SakuraPlus</a> -->
+              </span>
+          </p>
+        </div>
+         <!-- 网站作者版权注明 -->
+         
+    </div><!-- .site-info -->
+</footer>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/lib.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/InsightSearch.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/sakura-app.js"></script>
+
+
+<!-- fancybox大图查看 需jq -->
+
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/cungudafa/cdn/js/jquery.fancybox.min.js"></script>
+  <script>
+    $('[data-fancybox="images"]').fancybox({
+      thumbs : {
+        autoStart : true //缩略图
+      }
+    });
+    $('[data-fancybox]').fancybox({
+      protect: true,//图片右键不能下载
+      youtube : {
+          controls : 0,
+          showinfo : 0
+      },
+      vimeo : {
+          color : 'f00'
+      }
+    });
+  </script>
+
+
+<!-- 自适应浏览器 -->
+<script type="text/javascript">
+  /* <![CDATA[ */
+  if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    var Poi = {"pjax":"0","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"close"},"windowheight":"fixed","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  } else {
+    var Poi = {"pjax":"0","movies":{"url": "https://cdn.jsdelivr.net/gh/honjun/hojun@1.2","name":"Unbroken.mp4","live":"open"},"windowheight":"auto","codelamp":"close","ajaxurl":"","order":"asc","formpostion":"bottom"};
+  }
+  /* ]]> */
+  
+  </script>
+  <script>
+  $(document).ready(function() {
+    if ($(".toc").length > 0 && document.body.clientWidth > 1200) {
+      if ($(".pattern-center").length > 0) { //有图的情况
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -400,
+            scrollSmoothOffset: -85
+        });
+      } else {
+        tocbot.init({
+            // Where to render the table of contents.
+            tocSelector: '.toc', // 放置目录的容器
+            // Where to grab the headings to build the table of contents.
+            contentSelector: '.entry-content', // 正文内容所在
+            // Which headings to grab inside of the contentSelector element.
+            scrollSmooth: true,
+            headingSelector: 'h1, h2, h3, h4, h5', // 需要索引的标题级别
+            headingsOffset: -85,
+            scrollSmoothOffset: -85
+        });
+      }
+      var offsetTop = $('.toc').offset().top - 95;
+      window.onscroll = function() {
+        var scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+        if (scrollTop >= offsetTop) {
+          $('.toc').addClass('toc-fixed');
+        } else {
+          $('.toc').removeClass('toc-fixed');
+        }
+      }
+    }
+  });
+  </script>
+    <!-- Side menu -->
+    <div class="openNav no-select" style="height: 50px;">
+      <div class="iconflat no-select" style="width: 50px; height: 50px;">
+        <div class="icon"></div>
+      </div>
+      <div class="site-branding search-form-submit">
+        <i class="iconfont js-toggle-search iconsearch icon-search"></i>
+      </div>
+    </div>
+  </section>
+  <!-- Floating window -->
+  <div id="mo-nav" class="">
+  <div class="m-avatar">
+    <img src="https://cdn.jsdelivr.net/gh/orangepro11/cdn/my_avatar.jpeg">
+  </div>
+  <p style="text-align: center; color: #333; font-weight: 900; font-family: 'Ubuntu', sans-serif; letter-spacing: 1.5px">ornage-juice你不觉得阳光和橙子很配吗</p>
+  <p style="text-align: center; word-spacing: 20px;">
+    
+  </p>
+  <ul id="menu-new-1" class="menu">
+    
+      <li>
+        <a href="/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-fort-awesome faa-shake" aria-hidden="true"></i>
+            首页
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/archives">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-archive faa-shake" aria-hidden="true"></i>
+            归档
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/tags">
+                  <i class="fa fa-tags" aria-hidden="true"></i>
+                  标签
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E6%8A%80%E6%9C%AF/">
+                  <i class="fa fa-code" aria-hidden="true"></i>
+                  技术
+                </a>
+              </li>
+            
+              <li>
+                <a href="/categories/%E7%94%9F%E6%B4%BB/">
+                  <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                  生活
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="javascript:;">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-list-ul faa-vertical" aria-hidden="true"></i>
+            清单
+          </span>
+        </a>
+        
+          <ul class="sub-menu">
+            
+              <li>
+                <a href="/artitalk/">
+                  <i class="fa fa-commenting-o fa-commenting" aria-hidden="true"></i>
+                  说说
+                </a>
+              </li>
+            
+              <li>
+                <a href="/photos/">
+                  <i class="fa fa-photo" aria-hidden="true"></i>
+                  相册
+                </a>
+              </li>
+            
+              <li>
+                <a href="/books/">
+                  <i class="fa fa-book" aria-hidden="true"></i>
+                  悦读
+                </a>
+              </li>
+            
+              <li>
+                <a href="/movies/">
+                  <i class="fa fa-film faa-vertical" aria-hidden="true"></i>
+                  追剧
+                </a>
+              </li>
+            
+          </ul>
+        
+      </li>
+    
+      <li>
+        <a href="/links/">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-link faa-shake" aria-hidden="true"></i>
+            友人帐
+          </span>
+        </a>
+        
+      </li>
+    
+      <li>
+        <a href="/atom.xml">
+          <span class="faa-parent animated-hover">
+            <i class="fa  fa-rss faa-pulse" aria-hidden="true"></i>
+            RSS
+          </span>
+        </a>
+        
+      </li>
+    
+  </ul>
+  <p style="text-align: center; font-size: 13px; color: #b9b9b9;">&copy 2020 hexo-sakuraplus</p>
+</div>
+<button onclick="topFunction()" class="mobile-cd-top" id="moblieGoTop" title="Go to top" style="display: none;"><i class="fa fa-chevron-up" aria-hidden="true"></i></button>
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+<script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+<style>
+  .aplayer .aplayer-lrc {
+    height: 35px;
+  }
+  .aplayer .aplayer-lrc p{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px !important;
+  }
+  .aplayer .aplayer-lrc p.aplayer-lrc-current{
+    color: #FF1493;
+  }
+  .aplayer.aplayer-narrow .aplayer-body{
+    left: -66px !important;
+  }
+  .aplayer.aplayer-fixed .aplayer-lrc {
+    display: none;
+  }
+  .aplayer .aplayer-lrc.aplayer-lrc-hide {
+      display:none !important;
+  }
+  .aplayer.aplayer-fixed .lrc-show {
+    display: block;
+    background: rgba(255, 255, 255, 0.8);
+  }
+</style>
+<meting-js
+
+    enable="true"
+
+    id="2660651585"
+
+    server="netease"
+
+    type="playlist"
+
+    fixed="true"
+
+    autoplay="false"
+
+    loop="all"
+
+    order="random"
+
+    preload="auto"
+
+    volume="0.7"
+
+    mutex="true"
+
+>
+</meting-js>
+<script>
+  $(function(){
+    $('body').on('click', '.aplayer', function(){
+      if($('.aplayer-button').hasClass('aplayer-play')) {
+        $('.aplayer-lrc').removeClass('lrc-show');
+      } else {
+        $('.aplayer-lrc').addClass('lrc-show');
+      }
+    })
+  });
+</script>
+
+   <!-- pages壁纸切换 -->
+ 
+    <div class="skin-menu no-select" id="mainskin"  style="position: fixed">
+        <div class="theme-controls row-container">
+            <ul class="menu-list">
+                <li id="white-bg"> <i class="fa fa-television" aria-hidden="true"></i></li>
+                <li id="sakura-bg"> <i class="iconfont icon-sakura"></i></li>
+                <li id="gribs-bg"> <i class="fa fa-slack" aria-hidden="true"></i></li>
+                <li id="KAdots-bg"> <i class="iconfont icon-dots"></i></li>
+                <li id="totem-bg"> <i class="fa fa-optin-monster" aria-hidden="true"></i></li>
+                <li id="pixiv-bg"> <i class="iconfont icon-pixiv"></i></li>
+                <li id="bing-bg"> <i class="iconfont icon-bing"></i></li>
+                <li id="dark-bg"> <i class="fa fa-moon-o" aria-hidden="true"></i></li>
+            </ul>
+        </div>
+        <div class="font-family-controls row-container">
+            <button type="button" class="control-btn-serif selected" data-mode="serif" onclick="mashiro_global.font_control.change_font()">Serif</button>
+            <button type="button" class="control-btn-sans-serif" data-mode="sans-serif" onclick="mashiro_global.font_control.change_font()">Sans Serif</button>
+        </div>
+    </div>   
+    <canvas id="night-mode-cover"></canvas> 
+        <div class="changeSkin-gear no-select">
+        <div class="keys" id="setbtn"> <span id="open-skinMenu"> 切换壁纸 | SCHEME TOOL 
+            &nbsp;<i class="iconfont icon-gear inline-block rotating"></i> </span></div>
+    </div><!-- skin.end -->
+
+  <!-- left side bar -->
+
+ </body>
+</html>
