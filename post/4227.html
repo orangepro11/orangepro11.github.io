@@ -344,7 +344,7 @@
     <i class="fa fa-book"></i>
     <span class="post-meta-item-text">字数统计: </span>
     <!-- 安装插件npm install hexo-wordcount --save -->
-    <span class="post-count">853字</span>
+    <span class="post-count">867字</span>
   </span>
 </span>
 <span class="bull">
@@ -383,52 +383,51 @@
         <!--套嵌目录使用（主要为了支援评论）-->
         
         <div class="entry-content">
-          <h1 id="Yarn构建项目"><a href="#Yarn构建项目" class="headerlink" title="Yarn构建项目"></a>Yarn构建项目</h1><p>对于不知道响应式编程的概念的人，不用管，直接开始做就可以了，做下去就知道响应式编程的应用场景了。</p>
+          <h1 id="Yarn-构建项目"><a href="#Yarn-构建项目" class="headerlink" title="Yarn 构建项目"></a>Yarn 构建项目</h1><p>对于不知道响应式编程的概念的人，不用管，直接开始做就可以了，做下去就知道响应式编程的应用场景了。</p>
 <h2 id="init"><a href="#init" class="headerlink" title="init"></a>init</h2><pre><code>yarn init -y</code></pre>
 <h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><pre><code>yarn add rxjs typescript ts-loader webpack webpack-dev-server webpack-cli</code></pre>
-<h2 id="调整package-json文件"><a href="#调整package-json文件" class="headerlink" title="调整package.json文件"></a>调整package.json文件</h2><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"rxjs-tutorial"</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
-  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span><span class="token punctuation">,</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"webpack --mode development -w"</span> 
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"rxjs"</span><span class="token operator">:</span> <span class="token string">"^7.3.0"</span><span class="token punctuation">,</span>
-    <span class="token property">"ts-loader"</span><span class="token operator">:</span> <span class="token string">"^9.2.5"</span><span class="token punctuation">,</span>
-    <span class="token property">"typescript"</span><span class="token operator">:</span> <span class="token string">"^4.3.5"</span><span class="token punctuation">,</span>
-    <span class="token property">"webpack"</span><span class="token operator">:</span> <span class="token string">"^5.51.1"</span><span class="token punctuation">,</span>
-    <span class="token property">"webpack-dev-server"</span><span class="token operator">:</span> <span class="token string">"^4.0.0"</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"webpack-cli"</span><span class="token operator">:</span> <span class="token string">"^4.8.0"</span>
-  <span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<h2 id="新建webpack-config-js"><a href="#新建webpack-config-js" class="headerlink" title="新建webpack.config.js"></a>新建webpack.config.js</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<h2 id="调整-package-json-文件"><a href="#调整-package-json-文件" class="headerlink" title="调整 package.json 文件"></a>调整 package.json 文件</h2><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+    <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"rxjs-tutorial"</span><span class="token punctuation">,</span>
+    <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+    <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span><span class="token punctuation">,</span>
+    <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"dev"</span><span class="token operator">:</span> <span class="token string">"webpack --mode development -w"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"rxjs"</span><span class="token operator">:</span> <span class="token string">"^7.3.0"</span><span class="token punctuation">,</span>
+        <span class="token property">"ts-loader"</span><span class="token operator">:</span> <span class="token string">"^9.2.5"</span><span class="token punctuation">,</span>
+        <span class="token property">"typescript"</span><span class="token operator">:</span> <span class="token string">"^4.3.5"</span><span class="token punctuation">,</span>
+        <span class="token property">"webpack"</span><span class="token operator">:</span> <span class="token string">"^5.51.1"</span><span class="token punctuation">,</span>
+        <span class="token property">"webpack-dev-server"</span><span class="token operator">:</span> <span class="token string">"^4.0.0"</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+        <span class="token property">"webpack-cli"</span><span class="token operator">:</span> <span class="token string">"^4.8.0"</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="新建-webpack-config-js"><a href="#新建-webpack-config-js" class="headerlink" title="新建 webpack.config.js"></a>新建 webpack.config.js</h2><pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> path <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'path'</span><span class="token punctuation">)</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
-  entry<span class="token punctuation">:</span> <span class="token string">'./src/code.ts'</span><span class="token punctuation">,</span>
-  devtool<span class="token punctuation">:</span> <span class="token string">'inline-source-map'</span><span class="token punctuation">,</span>
-  module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-      <span class="token punctuation">{</span>
-        test<span class="token punctuation">:</span> <span class="token regex">/\.tsx?$/</span><span class="token punctuation">,</span>
-        use<span class="token punctuation">:</span> <span class="token string">'ts-loader'</span><span class="token punctuation">,</span>
-        exclude<span class="token punctuation">:</span> <span class="token regex">/node_modules/</span>
-      <span class="token punctuation">}</span>
-    <span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'.ts'</span><span class="token punctuation">,</span> <span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.tsx'</span><span class="token punctuation">]</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    filename<span class="token punctuation">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
-    path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
+    entry<span class="token punctuation">:</span> <span class="token string">'./src/code.ts'</span><span class="token punctuation">,</span>
+    devtool<span class="token punctuation">:</span> <span class="token string">'inline-source-map'</span><span class="token punctuation">,</span>
+    module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+            <span class="token punctuation">{</span>
+                test<span class="token punctuation">:</span> <span class="token regex">/\.tsx?$/</span><span class="token punctuation">,</span>
+                use<span class="token punctuation">:</span> <span class="token string">'ts-loader'</span><span class="token punctuation">,</span>
+                exclude<span class="token punctuation">:</span> <span class="token regex">/node_modules/</span><span class="token punctuation">,</span>
+            <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    resolve<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        extensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'.ts'</span><span class="token punctuation">,</span> <span class="token string">'.js'</span><span class="token punctuation">,</span> <span class="token string">'.tsx'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        filename<span class="token punctuation">:</span> <span class="token string">'bundle.js'</span><span class="token punctuation">,</span>
+        path<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'dist'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="新建tsconfig-json"><a href="#新建tsconfig-json" class="headerlink" title="新建tsconfig.json"></a>新建tsconfig.json</h2><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
+<h2 id="新建-tsconfig-json"><a href="#新建-tsconfig-json" class="headerlink" title="新建 tsconfig.json"></a>新建 tsconfig.json</h2><pre class=" language-json"><code class="language-json"><span class="token punctuation">{</span>
     <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
         <span class="token property">"outDir"</span><span class="token operator">:</span> <span class="token string">"./dist/"</span><span class="token punctuation">,</span>
         <span class="token property">"noImplicitAny"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
@@ -436,168 +435,175 @@ module<span class="token punctuation">.</span>exports <span class="token operato
         <span class="token property">"moduleResolution"</span><span class="token operator">:</span> <span class="token string">"node"</span><span class="token punctuation">,</span>
         <span class="token property">"sourceMap"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
         <span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"es6"</span><span class="token punctuation">,</span>
-        <span class="token property">"typeRoots"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token string">"node_modules/@types"</span>
-        <span class="token punctuation">]</span><span class="token punctuation">,</span>
-        <span class="token property">"lib"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
-            <span class="token string">"es2017"</span><span class="token punctuation">,</span>
-            <span class="token string">"dom"</span>
-        <span class="token punctuation">]</span>
+        <span class="token property">"typeRoots"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"node_modules/@types"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+        <span class="token property">"lib"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"es2017"</span><span class="token punctuation">,</span> <span class="token string">"dom"</span><span class="token punctuation">]</span>
     <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre>
-<h2 id="新建index-html"><a href="#新建index-html" class="headerlink" title="新建index.html"></a>新建index.html</h2><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
+<h2 id="新建-index-html"><a href="#新建-index-html" class="headerlink" title="新建 index.html"></a>新建 index.html</h2><pre class=" language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>IE<span class="token punctuation">=</span>edge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width<span class="token punctuation">=</span>device-width, initial-scale<span class="token punctuation">=</span>1.0<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Learn RxJS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
-        <span class="token selector">body </span><span class="token punctuation">{</span>
-            <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Arial'</span><span class="token punctuation">;</span>
-            <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#ececec</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token selector">ul </span><span class="token punctuation">{</span>
-            <span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
-            <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        <span class="token selector">li </span><span class="token punctuation">{</span>
-            <span class="token property">padding</span><span class="token punctuation">:</span><span class="token number">20</span>px<span class="token punctuation">;</span>
-            <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#fff</span><span class="token punctuation">;</span>
-            <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>output<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./dist/bundle.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">http-equiv</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>X-UA-Compatible<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>IE<span class="token punctuation">=</span>edge<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>viewport<span class="token punctuation">"</span></span> <span class="token attr-name">content</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>width<span class="token punctuation">=</span>device-width, initial-scale<span class="token punctuation">=</span>1.0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Learn RxJS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style language-css">
+            <span class="token selector">body </span><span class="token punctuation">{</span>
+                <span class="token property">font-family</span><span class="token punctuation">:</span> <span class="token string">'Arial'</span><span class="token punctuation">;</span>
+                <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#ececec</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token selector">ul </span><span class="token punctuation">{</span>
+                <span class="token property">list-style-type</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+                <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token selector">li </span><span class="token punctuation">{</span>
+                <span class="token property">padding</span><span class="token punctuation">:</span> <span class="token number">20</span>px<span class="token punctuation">;</span>
+                <span class="token property">background</span><span class="token punctuation">:</span> <span class="token hexcode">#fff</span><span class="token punctuation">;</span>
+                <span class="token property">margin-bottom</span><span class="token punctuation">:</span> <span class="token number">5</span>px<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>output<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./dist/bundle.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre>
-<h2 id="新建src-code-ts"><a href="#新建src-code-ts" class="headerlink" title="新建src/code.ts"></a>新建src/code.ts</h2><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token operator">*</span> as Rx <span class="token keyword">from</span> <span class="token string">'rxjs'</span><span class="token punctuation">;</span>
+<h2 id="新建-src-code-ts"><a href="#新建-src-code-ts" class="headerlink" title="新建 src/code.ts"></a>新建 src/code.ts</h2><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token operator">*</span> as Rx <span class="token keyword">from</span> <span class="token string">'rxjs'</span>
 
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Rx<span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Rx<span class="token punctuation">)</span></code></pre>
 <h2 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h2><pre><code>yarn dev</code></pre>
-<h2 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h2><p>使用vscode的Live Server插件将页面运行到web服务器</p>
-<p><a target="_blank" rel="noopener" href="http://127.0.0.1:5500/">http://127.0.0.1:5500</a> , 打开控制台，可看到打印的module</p>
-<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Observable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"rxjs"</span><span class="token punctuation">;</span>
+<h2 id="Live-Server"><a href="#Live-Server" class="headerlink" title="Live Server"></a>Live Server</h2><p>使用 vscode 的 Live Server 插件将页面运行到 web 服务器</p>
+<p><a target="_blank" rel="noopener" href="http://127.0.0.1:5500/">http://127.0.0.1:5500</a> , 打开控制台，可看到打印的 module</p>
+<h1 id="Hello-World"><a href="#Hello-World" class="headerlink" title="Hello World"></a>Hello World</h1><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Observable <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'rxjs'</span>
 
 <span class="token keyword">let</span> observable <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observe<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
 observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <h1 id="直接在浏览器上输出"><a href="#直接在浏览器上输出" class="headerlink" title="直接在浏览器上输出"></a>直接在浏览器上输出</h1><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">function</span> <span class="token function">print</span><span class="token punctuation">(</span>val<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword">void</span> <span class="token punctuation">{</span>
-    <span class="token keyword">let</span> node <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">let</span> textnode <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    node<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>textnode<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span>
-</code></pre>
-<p>然后就可以把console.log()替换成print()了。</p>
-<h1 id="尝试在observe中多next一点东西"><a href="#尝试在observe中多next一点东西" class="headerlink" title="尝试在observe中多next一点东西"></a>尝试在observe中多next一点东西</h1><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observable <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observe<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'How are you?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+    <span class="token keyword">let</span> node <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'li'</span><span class="token punctuation">)</span>
+    <span class="token keyword">let</span> textnode <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>
+    node<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>textnode<span class="token punctuation">)</span>
+    document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'output'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>node<span class="token punctuation">)</span>
+<span class="token punctuation">}</span></code></pre>
+<p>然后就可以把 console.log()替换成 print()了。</p>
+<h1 id="尝试在-observe-中多-next-一点东西"><a href="#尝试在-observe-中多-next-一点东西" class="headerlink" title="尝试在 observe 中多 next 一点东西"></a>尝试在 observe 中多 next 一点东西</h1><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observable <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observe<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
+    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'How are you?'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>能够看到屏幕上把两个都打印了出来。</p>
 <h2 id="complete"><a href="#complete" class="headerlink" title="complete"></a>complete</h2><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observable <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observe<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'How are you?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'多发送一点东西'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    observe<span class="token punctuation">.</span><span class="token function">complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'这个不会被发送'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>在complete之后的内容不会被发送</p>
-<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><pre class=" language-typescript"><code class="language-typescript">
-<span class="token keyword">let</span> observable <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observe<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
+    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'How are you?'</span><span class="token punctuation">)</span>
+    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'多发送一点东西'</span><span class="token punctuation">)</span>
+    observe<span class="token punctuation">.</span><span class="token function">complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'这个不会被发送'</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
+<p>在 complete 之后的内容不会被发送</p>
+<h2 id="处理异常"><a href="#处理异常" class="headerlink" title="处理异常"></a>处理异常</h2><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observable <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observe<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">try</span> <span class="token punctuation">{</span>
-        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'How are you?'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'多发送一点东西'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        observe<span class="token punctuation">.</span><span class="token function">complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'这个不会被发送'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
+        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'How are you?'</span><span class="token punctuation">)</span>
+        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'多发送一点东西'</span><span class="token punctuation">)</span>
+        observe<span class="token punctuation">.</span><span class="token function">complete</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'这个不会被发送'</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        observe<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        observe<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
-<p>在subscribe的第二个函数中监听错误。</p>
-<h2 id="已完成状态"><a href="#已完成状态" class="headerlink" title="已完成状态"></a>已完成状态</h2><pre class=" language-typescript"><code class="language-typescript">observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'completed'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre>
+observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span></code></pre>
+<p>在 subscribe 的第二个函数中监听错误。</p>
+<h2 id="已完成状态"><a href="#已完成状态" class="headerlink" title="已完成状态"></a>已完成状态</h2><pre class=" language-typescript"><code class="language-typescript">observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'completed'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span></code></pre>
 <p>在第三个参数中处理已完成状态。</p>
-<p>有没有感觉和promise的resolve,reject两个状态很像？</p>
+<p>有没有感觉和 promise 的 resolve,reject 两个状态很像？</p>
 <p>所以现在我们知道了它的最常用的应用场景：<strong>包裹异步任务</strong></p>
 <h1 id="使用定时器的异步操作"><a href="#使用定时器的异步操作" class="headerlink" title="使用定时器的异步操作"></a>使用定时器的异步操作</h1><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observable <span class="token operator">=</span> Observable<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">(</span>observe<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
     <span class="token keyword">try</span> <span class="token punctuation">{</span>
-        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'Hello World'</span><span class="token punctuation">)</span>
         <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-            observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'I am good'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            observe<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token string">'I am good'</span><span class="token punctuation">)</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">2000</span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">e</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        observe<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        observe<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">let</span> observer <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'complete'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token keyword">let</span> observer <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'complete'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
 
 <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    observer<span class="token punctuation">.</span><span class="token function">unsubscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token number">6001</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
-<p>浏览器先打印Hello World然后每隔两秒打印I am good，打印三次后不再打印，异步任务按照我们期待的顺序被执行。</p>
-<h2 id="如果有两个观察者呢？"><a href="#如果有两个观察者呢？" class="headerlink" title="如果有两个观察者呢？"></a>如果有两个观察者呢？</h2><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observer1 <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'complete'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    observer<span class="token punctuation">.</span><span class="token function">unsubscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">6001</span><span class="token punctuation">)</span></code></pre>
+<p>浏览器先打印 Hello World 然后每隔两秒打印 I am good，打印三次后不再打印，异步任务按照我们期待的顺序被执行。</p>
+<h2 id="如果有两个观察者呢？"><a href="#如果有两个观察者呢？" class="headerlink" title="如果有两个观察者呢？"></a>如果有两个观察者呢？</h2><pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observer1 <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'complete'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
 
 <span class="token keyword">let</span> observer2 <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre>
 <p>可以看到两个任务几乎是在同时进行，两个观察者可以同时从管道中获取数据。</p>
 <h2 id="组合"><a href="#组合" class="headerlink" title="组合"></a>组合</h2><p>怎么把他们作为一个整体去操作？</p>
-<pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observer1 <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'complete'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<pre class=" language-typescript"><code class="language-typescript"><span class="token keyword">let</span> observer1 <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span>
+    <span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span>error<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+        <span class="token function">print</span><span class="token punctuation">(</span><span class="token string">'complete'</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
 
 <span class="token keyword">let</span> observer2 <span class="token operator">=</span> observable<span class="token punctuation">.</span><span class="token function">subscribe</span><span class="token punctuation">(</span><span class="token punctuation">(</span>x<span class="token punctuation">:</span> <span class="token keyword">any</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">print</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
 
-observer1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>observer2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+observer1<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>observer2<span class="token punctuation">)</span>
 
 <span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
-    observer1<span class="token punctuation">.</span><span class="token function">unsubscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">6001</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-</code></pre>
+    observer1<span class="token punctuation">.</span><span class="token function">unsubscribe</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">6001</span><span class="token punctuation">)</span></code></pre>
 <p>两个观察者同时开始同时结束。</p>
-<h2 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h2><p>和add对应，解除绑定关系，不再演示。</p>
+<h2 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h2><p>和 add 对应，解除绑定关系，不再演示。</p>
+<p>暂时不更新了。</p>
 
         </div>
 
